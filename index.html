@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aonnix Dev</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            cursor: default;
+        }
+
+        /* Cursor personalizado */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            mix-blend-mode: difference;
+        }
+
+        /* Navegación minimalista */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            mix-blend-mode: difference;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero - Tipografía gigante */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 4rem;
+            position: relative;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 15vw, 12rem);
+            font-weight: 700;
+            line-height: 0.9;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 .line {
+            display: block;
+            overflow: hidden;
+        }
+
+        .hero h1 .line span {
+            display: block;
+            animation: slideUp 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+            animation-delay: var(--delay);
+            transform: translateY(100%);
+        }
+
+        @keyframes slideUp {
+            to { transform: translateY(0); }
+        }
+
+        .hero h1 .outline {
+            -webkit-text-stroke: 1px #fff;
+            color: transparent;
+        }
+
+        .hero-description {
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: 10%;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #666;
+            animation: fadeIn 1s ease 0.8s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Número decorativo */
+        .hero-number {
+            position: absolute;
+            right: 4rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20rem;
+            font-weight: 700;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.1);
+            z-index: 1;
+        }
+
+        /* Sección Servicios */
+        .services {
+            padding: 10rem 4rem;
+            position: relative;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #444;
+            margin-bottom: 4rem;
+        }
+
+        .services-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .service-item {
+            padding: 3rem 0;
+            border-top: 1px solid #1a1a1a;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            align-items: center;
+            gap: 2rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .service-item:last-child {
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .service-item:hover {
+            padding-left: 2rem;
+            background: linear-gradient(90deg, rgba(255,255,255,0.02) 0%, transparent 100%);
+        }
+
+        .service-number {
+            font-size: 0.85rem;
+            color: #333;
+        }
+
+        .service-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 500;
+            transition: transform 0.4s ease;
+        }
+
+        .service-item:hover .service-title {
+            transform: translateX(1rem);
+        }
+
+        .service-arrow {
+            font-size: 2rem;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.4s ease;
+            text-align: right;
+        }
+
+        .service-item:hover .service-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Marquee */
+        .marquee-container {
+            padding: 6rem 0;
+            overflow: hidden;
+            border-top: 1px solid #1a1a1a;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .marquee {
+            display: flex;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee span {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            white-space: nowrap;
+            padding: 0 2rem;
+            color: transparent;
+            -webkit-text-stroke: 1px #333;
+        }
+
+        .marquee span:nth-child(odd) {
+            color: #fff;
+            -webkit-text-stroke: none;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* About minimalista */
+        .about {
+            padding: 10rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8rem;
+            align-items: center;
+        }
+
+        .about-visual {
+            position: relative;
+            height: 500px;
+        }
+
+        .about-circle {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #222;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: rotate 30s linear infinite;
+        }
+
+        .about-circle::before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border-radius: 50%;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes rotate {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .about-circle:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            animation-direction: reverse;
+            animation-duration: 20s;
+        }
+
+        .about-content h2 {
+            font-size: 3rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .about-content p {
+            color: #666;
+            line-height: 2;
+            margin-bottom: 3rem;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #fff;
+            transition: gap 0.3s ease;
+        }
+
+        .contact-link:hover {
+            gap: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .footer-left {
+            font-size: 0.8rem;
+            color: #444;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 0 2rem;
+            }
+
+            .hero-number {
+                display: none;
+            }
+
+            .hero-description {
+                margin: 2rem 0;
+            }
+
+            .services {
+                padding: 6rem 2rem;
+            }
+
+            .service-item {
+                grid-template-columns: auto 1fr auto;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                padding: 6rem 2rem;
+                gap: 4rem;
+            }
+
+            .about-visual {
+                height: 300px;
+            }
+
+            .about-circle {
+                width: 250px;
+                height: 250px;
+            }
+
+            .about-circle:nth-child(2) {
+                width: 180px;
+                height: 180px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 2rem;
+                align-items: start;
+                padding: 3rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+
+    <nav>
+        <div class="logo">Aonnix</div>
+        <div class="nav-links">
+            <a href="#servicios">Servicios</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-number">01</div>
+        <div class="hero-text">
+            <h1>
+                <span class="line"><span style="--delay: 0.2s">Creamos</span></span>
+                <span class="line"><span style="--delay: 0.4s" class="outline">experiencias</span></span>
+                <span class="line"><span style="--delay: 0.6s">digitales</span></span>
+            </h1>
+            <p class="hero-description">
+                Software, web y apps móviles. Diseño y desarrollo que transforma ideas en productos excepcionales.
+            </p>
+        </div>
+    </section>
+
+    <section class="marquee-container">
+        <div class="marquee">
+            <span>Software</span>
+            <span>Web</span>
+            <span>Mobile</span>
+            <span>Design</span>
+            <span>Software</span>
+            <span>Web</span>
+            <span>Mobile</span>
+            <span>Design</span>
+        </div>
+    </section>
+
+    <section class="services" id="servicios">
+        <div class="section-label">Lo que hacemos</div>
+        <div class="services-list">
+            <div class="service-item">
+                <span class="service-number">01</span>
+                <span class="service-title">Desarrollo de Software</span>
+                <span class="service-arrow">→</span>
+            </div>
+            <div class="service-item">
+                <span class="service-number">02</span>
+                <span class="service-title">Aplicaciones Web</span>
+                <span class="service-arrow">→</span>
+            </div>
+            <div class="service-item">
+                <span class="service-number">03</span>
+                <span class="service-title">Apps Móviles</span>
+                <span class="service-arrow">→</span>
+            </div>
+            <div class="service-item">
+                <span class="service-number">04</span>
+                <span class="service-title">UI/UX Design</span>
+                <span class="service-arrow">→</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="nosotros">
+        <div class="about-visual">
+            <div class="about-circle"></div>
+            <div class="about-circle"></div>
+        </div>
+        <div class="about-content">
+            <h2>Menos es más. Cada línea de código cuenta.</h2>
+            <p>
+                Somos un estudio de desarrollo enfocado en crear soluciones digitales que combinan funcionalidad excepcional con diseño minimalista. No hacemos más de lo necesario, hacemos exactamente lo que tu proyecto necesita.
+            </p>
+            <a href="mailto:hola@aonnix.com" class="contact-link" id="contacto">
+                Hablemos <span>→</span>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-left">
+            © 2025 Aonnix Dev
+        </div>
+    </footer>
+
+    <script>
+        // Cursor personalizado
+        const cursor = document.querySelector('.cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 10 + 'px';
+            cursor.style.top = e.clientY - 10 + 'px';
+        });
+
+        document.querySelectorAll('a, .service-item').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(2)';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
