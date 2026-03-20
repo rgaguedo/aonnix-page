@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRED Infantil — Soporte y Política de Privacidad</title>
+    <style>
+        :root {
+            --primary: #5BAFA0;
+            --primary-dark: #4A998B;
+            --secondary: #5A9AB5;
+            --gold: #D4A83A;
+            --bg: #F7F4F0;
+            --surface: #FFFEFC;
+            --text: #2C2A26;
+            --text-secondary: #5C5850;
+            --error: #C4574E;
+            --border: #EDE8E2;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 24px 20px 60px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0 32px;
+        }
+
+        header .icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 32px;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        nav {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            padding: 8px 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--primary-dark);
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        nav a:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        section {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border);
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary);
+            display: inline-block;
+        }
+
+        h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            margin: 20px 0 8px;
+        }
+
+        h3:first-of-type { margin-top: 8px; }
+
+        p { margin-bottom: 12px; font-size: 14px; }
+
+        ul, ol {
+            margin: 8px 0 16px 20px;
+            font-size: 14px;
+        }
+
+        li { margin-bottom: 6px; }
+
+        .disclaimer {
+            background: #FCE8E6;
+            border-left: 4px solid var(--error);
+            padding: 16px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .disclaimer strong {
+            color: var(--error);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .premium-box {
+            background: linear-gradient(135deg, rgba(212,168,58,0.08), rgba(212,168,58,0.15));
+            border: 1px solid rgba(212,168,58,0.3);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+
+        .premium-box strong {
+            color: var(--gold);
+        }
+
+        .source {
+            background: var(--bg);
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .source strong {
+            display: block;
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        .source span {
+            color: var(--text-secondary);
+        }
+
+        a {
+            color: var(--primary-dark);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .contact-item {
+            background: var(--bg);
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+        .contact-item strong {
+            display: block;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 2px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px 0;
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+
+        @media (max-width: 480px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            nav { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="icon">✚</div>
+            <h1>CRED Infantil</h1>
+            <p>Control de Crecimiento y Desarrollo · 0 a 5 años</p>
+        </header>
+
+        <nav>
+            <a href="#soporte">Soporte</a>
+            <a href="#faq">Preguntas frecuentes</a>
+            <a href="#privacidad">Política de privacidad</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+
+        <!-- SOPORTE -->
+        <section id="soporte">
+            <h2>Acerca de la aplicación</h2>
+            <p><strong>CRED Infantil</strong> es una herramienta de consulta para el Control de Crecimiento y Desarrollo (CRED) de niños y niñas de 0 a 5 años, conforme a la normativa vigente del Ministerio de Salud del Perú (MINSA) y los estándares de la Organización Mundial de la Salud (OMS).</p>
+
+            <h3>¿Qué puedo hacer?</h3>
+            <ul>
+                <li><strong>Evaluar el crecimiento</strong> ingresando peso y talla para obtener z-scores según estándares OMS</li>
+                <li><strong>Consultar el esquema de vacunación</strong> nacional completo de 0 a 4 años</li>
+                <li><strong>Revisar la normativa vigente</strong> del MINSA relacionada al CRED</li>
+            </ul>
+
+            <div class="disclaimer">
+                <strong>⚠ Aviso importante</strong>
+                Esta aplicación es de carácter informativo y de apoyo a la consulta profesional. No reemplaza la evaluación clínica ni el juicio profesional del personal de salud calificado.
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq">
+            <h2>Preguntas frecuentes</h2>
+
+            <h3>¿Necesito conexión a internet?</h3>
+            <p>No. La aplicación funciona <strong>100% offline</strong>. Todos los datos están incluidos en la app.</p>
+
+            <h3>¿La app recopila datos personales?</h3>
+            <p>No. CRED Infantil <strong>no recopila, almacena ni transmite ningún dato personal</strong>. Los datos que ingresas para la evaluación se procesan localmente en tu dispositivo y no se guardan.</p>
+
+            <h3>¿Qué incluye la versión Premium?</h3>
+            <div class="premium-box">
+                <strong>★ Premium — Pago único</strong>
+                <ul>
+                    <li>Tablas de crecimiento completas con z-scores</li>
+                    <li>Descripción completa de cada vacuna</li>
+                    <li>Recomendaciones clínicas personalizadas</li>
+                    <li>Todas las futuras actualizaciones de contenido</li>
+                </ul>
+            </div>
+
+            <h3>¿Cómo restauro mi compra Premium?</h3>
+            <ol>
+                <li>Abre la app y ve a la pestaña <strong>Inicio</strong></li>
+                <li>En la sección Premium, presiona <strong>"Restaurar compras"</strong></li>
+                <li>Se verificará tu compra con tu cuenta de Apple</li>
+            </ol>
+
+            <h3>¿Cómo solicito un reembolso?</h3>
+            <p>Los reembolsos son gestionados directamente por Apple. Puedes solicitarlo en <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>.</p>
+
+            <h3>Compatibilidad</h3>
+            <p>iOS 17.0 o superior · iPhone y iPad · Modo claro y oscuro</p>
+        </section>
+
+        <!-- FUENTES -->
+        <section id="fuentes">
+            <h2>Fuentes oficiales</h2>
+            <div class="source">
+                <strong>RM N° 682-2025/MINSA</strong>
+                <span>Resolución que aprueba la Norma Técnica de Salud</span>
+            </div>
+            <div class="source">
+                <strong>NTS N° 238-MINSA/DGIESP-2025</strong>
+                <span>Norma Técnica de Salud para el CRED</span>
+            </div>
+            <div class="source">
+                <strong>Esquema Nacional de Vacunación</strong>
+                <span><a href="https://www.gob.pe/22037" target="_blank" rel="noopener">gob.pe/22037</a></span>
+            </div>
+            <div class="source">
+                <strong>Estándares de Crecimiento OMS</strong>
+                <span>Tablas de crecimiento de la Organización Mundial de la Salud</span>
+            </div>
+        </section>
+
+        <!-- PRIVACIDAD -->
+        <section id="privacidad">
+            <h2>Política de privacidad</h2>
+            <p><em>Última actualización: Marzo 2026</em></p>
+
+            <h3>Datos recopilados</h3>
+            <p>CRED Infantil <strong>no recopila ningún dato personal</strong>. La aplicación:</p>
+            <ul>
+                <li>No requiere crear una cuenta ni iniciar sesión</li>
+                <li>No recopila información de identificación personal</li>
+                <li>No utiliza servicios de analítica ni seguimiento</li>
+                <li>No comparte datos con terceros</li>
+                <li>No utiliza cookies ni tecnologías de rastreo</li>
+                <li>No accede a contactos, ubicación, cámara ni ningún otro recurso del dispositivo</li>
+            </ul>
+
+            <h3>Datos almacenados localmente</h3>
+            <p>La única información almacenada en el dispositivo es:</p>
+            <ul>
+                <li>El estado de la compra Premium (verificado a través de Apple StoreKit)</li>
+                <li>La preferencia de haber aceptado el aviso médico inicial</li>
+            </ul>
+            <p>Estos datos se almacenan exclusivamente en tu dispositivo y no son accesibles de forma remota.</p>
+
+            <h3>Compras dentro de la aplicación</h3>
+            <p>Las compras in-app son procesadas de forma segura a través de Apple StoreKit. No tenemos acceso a tu información de pago. Apple gestiona toda la transacción.</p>
+
+            <h3>Datos de menores</h3>
+            <p>La aplicación no recopila datos de ningún usuario, incluidos menores de edad. Los datos de evaluación de crecimiento que se ingresan son procesados localmente y no se almacenan ni transmiten.</p>
+
+            <h3>Cambios en esta política</h3>
+            <p>Cualquier cambio en esta política de privacidad se reflejará en esta página con la fecha de actualización correspondiente.</p>
+        </section>
+
+        <!-- CONTACTO -->
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <p>Si tienes preguntas, problemas o sugerencias:</p>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <strong>Email</strong>
+                    soporte@aonnix.com
+                </div>
+                <div class="contact-item">
+                    <strong>Desarrollador</strong>
+                    Aonix Dev
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2025 Aonix Dev. Todos los derechos reservados.</p>
+            <p>CRED Infantil v2.0.0</p>
+        </footer>
+    </div>
+</body>
+</html>
