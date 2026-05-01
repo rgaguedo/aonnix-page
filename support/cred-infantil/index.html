@@ -257,10 +257,10 @@
             <h2>Preguntas frecuentes</h2>
 
             <h3>¿Necesito conexión a internet?</h3>
-            <p>No. La aplicación funciona <strong>100% offline</strong>. Todos los datos están incluidos en la app.</p>
+            <p>Las funciones de consulta, evaluación y registro funcionan completamente <strong>offline</strong>. La aplicación sólo necesita conexión a internet cuando el usuario realiza la compra Premium o usa "Restaurar compras", ya que esas operaciones son procesadas por la App Store de Apple.</p>
 
             <h3>¿La app recopila datos personales?</h3>
-            <p>No. CRED Infantil <strong>no recopila, almacena ni transmite ningún dato personal</strong>. Los datos que ingresas para la evaluación se procesan localmente en tu dispositivo y no se guardan.</p>
+            <p>CRED Infantil <strong>no transmite datos a servidores</strong>. Los datos que ingresas para la evaluación de crecimiento se procesan localmente y no se guardan. Si registras perfiles de niños o vacunas aplicadas, esa información se almacena localmente en tu dispositivo y puedes eliminarla en cualquier momento desde la app.</p>
 
             <h3>¿Qué incluye la versión Premium?</h3>
             <div class="premium-box">
@@ -269,7 +269,7 @@
                     <li>Tablas de crecimiento completas con z-scores</li>
                     <li>Descripción completa de cada vacuna</li>
                     <li>Recomendaciones clínicas personalizadas</li>
-                    <li>Todas las futuras actualizaciones de contenido</li>
+                    <li>Acceso a futuras mejoras del contenido premium dentro de la misma app</li>
                 </ul>
             </div>
 
@@ -311,32 +311,38 @@
         <!-- PRIVACIDAD -->
         <section id="privacidad">
             <h2>Política de privacidad</h2>
-            <p><em>Última actualización: Marzo 2026</em></p>
+            <p><em>Última actualización: Mayo 2026</em></p>
 
             <h3>Datos recopilados</h3>
-            <p>CRED Infantil <strong>no recopila ningún dato personal</strong>. La aplicación:</p>
+            <p>CRED Infantil <strong>no transmite datos a servidores</strong>. La aplicación:</p>
             <ul>
                 <li>No requiere crear una cuenta ni iniciar sesión</li>
-                <li>No recopila información de identificación personal</li>
+                <li>No recopila información de identificación personal con fines remotos</li>
                 <li>No utiliza servicios de analítica ni seguimiento</li>
-                <li>No comparte datos con terceros</li>
+                <li>No comparte datos con terceros, salvo el procesamiento de la compra Premium por Apple StoreKit</li>
                 <li>No utiliza cookies ni tecnologías de rastreo</li>
-                <li>No accede a contactos, ubicación, cámara ni ningún otro recurso del dispositivo</li>
+                <li>No accede a contactos, ubicación, micrófono ni servicios de red</li>
+                <li>Solicita acceso opcional a Cámara y Galería de Fotos únicamente cuando el usuario añade una foto de perfil para un niño o niña</li>
+                <li>No integra SDKs de publicidad, atribución, tracking ni telemetría (Firebase, Google Analytics, Meta, Mixpanel, Sentry o equivalentes)</li>
             </ul>
 
             <h3>Datos almacenados localmente</h3>
-            <p>La única información almacenada en el dispositivo es:</p>
+            <p>La información que se almacena en el dispositivo es:</p>
             <ul>
+                <li>Perfiles de niños o niñas registrados (nombre, fecha de nacimiento, sexo)</li>
+                <li>Registros de vacunas aplicadas (vacuna y fecha)</li>
+                <li>Foto de perfil del niño o niña, si el usuario decide añadirla</li>
                 <li>El estado de la compra Premium (verificado a través de Apple StoreKit)</li>
-                <li>La preferencia de haber aceptado el aviso médico inicial</li>
+                <li>La preferencia de haber aceptado el aviso médico inicial y el aviso del módulo de seguimiento</li>
             </ul>
-            <p>Estos datos se almacenan exclusivamente en tu dispositivo y no son accesibles de forma remota.</p>
+            <p>Estos datos se almacenan exclusivamente en tu dispositivo, no son accesibles de forma remota y pueden eliminarse desde la propia app.</p>
+            <p>Las fotos de perfil viven en el directorio Documents del dispositivo. La aplicación no realiza copia de seguridad propia ni utiliza iCloud. Si tienes activado el backup nativo de iOS (Finder, iTunes o iCloud Backup), esas fotos podrán formar parte de dicho backup gestionado por el sistema operativo.</p>
 
             <h3>Compras dentro de la aplicación</h3>
             <p>Las compras in-app son procesadas de forma segura a través de Apple StoreKit. No tenemos acceso a tu información de pago. Apple gestiona toda la transacción.</p>
 
             <h3>Datos de menores</h3>
-            <p>La aplicación no recopila datos de ningún usuario, incluidos menores de edad. Los datos de evaluación de crecimiento que se ingresan son procesados localmente y no se almacenan ni transmiten.</p>
+            <p>La aplicación está pensada para uso por adultos responsables (padres, madres, cuidadores o personal de salud). Cuando el usuario decide registrar un niño o niña, los datos asociados (nombre, fecha de nacimiento, sexo, registros de vacunas y foto de perfil opcional) se almacenan localmente en el dispositivo, no se transmiten a servidores ni se comparten con terceros, y pueden eliminarse en cualquier momento desde la propia app.</p>
 
             <h3>Cambios en esta política</h3>
             <p>Cualquier cambio en esta política de privacidad se reflejará en esta página con la fecha de actualización correspondiente.</p>
@@ -353,14 +359,15 @@
                 </div>
                 <div class="contact-item">
                     <strong>Desarrollador</strong>
-                    Aonix Dev
+                    Aonnix Dev
                 </div>
             </div>
+            <p>Para la versión completa del documento legal, consulta también la <a href="/legal/cred-infantil-privacy/">Política de Privacidad de CRED Infantil</a>.</p>
         </section>
 
         <footer>
-            <p>© 2025 Aonix Dev. Todos los derechos reservados.</p>
-            <p>CRED Infantil v2.0.0</p>
+            <p>© 2026 Aonnix Dev. Todos los derechos reservados.</p>
+            <p>CRED Infantil v2.0.1</p>
         </footer>
     </div>
 </body>
