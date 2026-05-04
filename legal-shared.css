@@ -100,7 +100,24 @@ body {
 
 img, svg { max-width: 100%; display: block; }
 
-/* ---------- Top bar / breadcrumb ---------- */
+/* ---------- Estado activo de nav embebido (header del sitio principal reusado) ---------- */
+.nav-links a.active {
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 1px;
+}
+
+.nav-context {
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 600;
+    margin-right: 0.65rem;
+    white-space: nowrap;
+}
+
+/* ---------- Top bar / breadcrumb (legacy — se conserva por si se referencia en otra parte) ---------- */
 .topbar {
     position: relative;
     border-bottom: 1px solid var(--rule);

@@ -26,18 +26,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="/legal-shared.css">
 </head>
 <body>
-    <header class="topbar">
-        <a href="/" class="brand">Aonnix</a>
-        <nav class="crumbs" aria-label="Migas de pan">
-            <a href="/dev/">Dev</a>
-            <span class="crumb-sep">›</span>
-            <span>CRED Infantil</span>
-            <span class="crumb-sep">›</span>
-            <span>Términos</span>
-        </nav>
+    <header class="nav">
+        <div class="nav-inner">
+            <a class="brand" href="/">Aonnix</a>
+            <nav class="nav-links" aria-label="Documentos de CRED Infantil">
+                <span class="nav-context">CRED Infantil</span>
+                <a href="/legal/cred-infantil-privacy/">Privacidad</a>
+                <a href="/support/cred-infantil/">Soporte</a>
+                <a href="/terms/cred-infantil/" class="active" aria-current="page">Términos</a>
+            </nav>
+        </div>
     </header>
 
     <main class="page">

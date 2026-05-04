@@ -26,18 +26,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="/legal-shared.css">
 </head>
 <body>
-    <header class="topbar">
-        <a href="/" class="brand">Aonnix</a>
-        <nav class="crumbs" aria-label="Migas de pan">
-            <a href="/dev/">Dev</a>
-            <span class="crumb-sep">›</span>
-            <span>Lonchera Fácil</span>
-            <span class="crumb-sep">›</span>
-            <span>Privacidad</span>
-        </nav>
+    <header class="nav">
+        <div class="nav-inner">
+            <a class="brand" href="/">Aonnix</a>
+            <nav class="nav-links" aria-label="Documentos de Lonchera Fácil">
+                <span class="nav-context">Lonchera Fácil</span>
+                <a href="/legal/lonchera-facil-privacy/" class="active" aria-current="page">Privacidad</a>
+                <a href="/support/lonchera-facil/">Soporte</a>
+                <a href="/terms/lonchera-facil/">Términos</a>
+            </nav>
+        </div>
     </header>
 
     <main class="page">
