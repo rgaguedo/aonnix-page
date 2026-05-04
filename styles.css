@@ -33,8 +33,8 @@
         --bg-elev: #131316;
         --bg-soft: #101013;
         --fg: #f4f4f6;
-        --fg-muted: #a8a8b0;
-        --fg-faint: #6a6a72;
+        --fg-muted: #b8b8c0;
+        --fg-faint: #9a9aa1;
         --line: #1d1d22;
         --accent: #ffffff;
         --accent-soft: #e8e8ec;
@@ -449,6 +449,31 @@ h2.section-title {
     color: var(--fg-muted);
     font-size: 0.95rem;
 }
+
+/* Badge oficial de App Store en cards de apps publicadas */
+.app-cta {
+    margin: 0.85rem 0 0.95rem;
+    display: flex;
+    align-items: center;
+}
+
+.appstore-badge {
+    display: inline-flex;
+    transition: transform var(--t-fast), filter var(--t-fast);
+    border-radius: 7px;
+}
+
+.appstore-badge:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.1);
+}
+
+.appstore-badge:focus-visible {
+    outline: 2px solid var(--highlight);
+    outline-offset: 3px;
+}
+
+.appstore-badge svg { display: block; }
 
 .app-links {
     display: flex;
