@@ -4,19 +4,20 @@
    ========================================================= */
 
 :root {
-    /* Paleta clara (papel cálido) — por defecto */
-    --paper:        #faf8f3;
-    --paper-soft:   #f3efe5;
-    --surface:      #fffefb;
-    --surface-mute: #f7f2e7;
-    --ink:          #1c1a17;
-    --ink-muted:    #5a5550;
-    --ink-faint:    #8a847b;
-    --rule:         #e8e3d8;
-    --rule-strong:  #d6cfbe;
-    --gold:         #c9a25b;   /* trazo / acentos */
-    --gold-text:    #8a6d34;   /* enlaces sobre crema, contraste AA */
-    --gold-soft:    rgba(201, 162, 91, 0.12);
+    /* Paleta monocroma neutra — coherente con sitio principal aonnix.com */
+    --paper:        #ffffff;
+    --paper-soft:   #f6f6f7;
+    --surface:      #fafafa;
+    --surface-mute: #f0f0f1;
+    --ink:          #0e0e10;
+    --ink-muted:    #5b5b62;
+    --ink-faint:    #8a8a92;
+    --rule:         #e6e6ea;
+    --rule-strong:  #cfcfd4;
+    /* "gold" se conserva como variable por compatibilidad pero ahora es ink puro */
+    --gold:         #0e0e10;
+    --gold-text:    #0e0e10;
+    --gold-soft:    rgba(14, 14, 16, 0.05);
 
     /* Tipografía */
     --serif-stack:  "Space Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -42,18 +43,18 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --paper:        #1a1817;
-        --paper-soft:   #15130f;
-        --surface:      #221f1c;
-        --surface-mute: #1f1c19;
-        --ink:          #f0ebe2;
-        --ink-muted:    #b8b0a6;
-        --ink-faint:    #9a948b;
-        --rule:         #2e2b27;
-        --rule-strong:  #3a362f;
-        --gold:         #d4af6e;   /* mismo dorado, ligero levante para AA */
-        --gold-text:    #e8c489;
-        --gold-soft:    rgba(212, 175, 110, 0.14);
+        --paper:        #0b0b0d;
+        --paper-soft:   #101013;
+        --surface:      #131316;
+        --surface-mute: #18181b;
+        --ink:          #f4f4f6;
+        --ink-muted:    #b8b8c0;
+        --ink-faint:    #9a9aa1;
+        --rule:         #1d1d22;
+        --rule-strong:  #2c2c33;
+        --gold:         #f4f4f6;
+        --gold-text:    #f4f4f6;
+        --gold-soft:    rgba(244, 244, 246, 0.08);
     }
 }
 
