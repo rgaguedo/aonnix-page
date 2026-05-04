@@ -142,16 +142,8 @@ img, svg { max-width: 100%; display: block; }
     transition: color var(--t-fast);
 }
 
-.brand::before {
-    content: "";
-    display: inline-block;
-    width: 9px;
-    height: 9px;
-    background: var(--gold);
-    transform: rotate(45deg);
-}
-
-.brand:hover { color: var(--gold-text); }
+/* En las páginas legales el .brand debe verse idéntico al del sitio principal (sin rombo). */
+.brand::before { display: none; }
 
 .crumbs {
     font-size: 0.78rem;
