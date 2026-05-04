@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Aonnix">
+  <title>Aonnix — Tecnologia, contenido, audio y diseno</title>
+  <rect width="1200" height="630" fill="#0b0b0d"/>
+  <path d="M210 165 L350 465 L290 465 L262 397 L208 397 L180 465 L120 465 Z M222 367 L248 367 L235 333 Z" fill="#c9a25b"/>
+  <text x="420" y="320" font-family="'Space Grotesk', system-ui, sans-serif" font-size="128" font-weight="700" fill="#f4f4f6" letter-spacing="14">AONNIX</text>
+  <text x="424" y="385" font-family="'Space Grotesk', system-ui, sans-serif" font-size="32" font-weight="400" fill="#a8a8b0" letter-spacing="6">Tecnologia, contenido, audio y diseno</text>
+  <rect x="424" y="430" width="80" height="2" fill="#c9a25b"/>
+  <text x="424" y="475" font-family="'Space Grotesk', system-ui, sans-serif" font-size="22" font-weight="400" fill="#6a6a72" letter-spacing="4">aonnix.com</text>
+</svg>
