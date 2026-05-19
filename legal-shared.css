@@ -14,10 +14,12 @@
     --ink-faint:    #A1A1AA;        /* cold-silver del brand kit */
     --rule:         #e6e6ea;
     --rule-strong:  #cfcfd4;
-    /* "gold" se mantiene como compatibility shim — ahora apunta a graphite */
-    --gold:         #0D0D0F;
-    --gold-text:    #0D0D0F;
-    --gold-soft:    rgba(13, 13, 15, 0.05);
+    /* `--gold` se conserva como nombre histórico (compatibilidad con selectores existentes)
+       pero hoy apunta al premium blue del sistema — actúa como accent activo en eyebrows,
+       subrayados de h2, drop caps y guiones decorativos */
+    --gold:         #2563EB;
+    --gold-text:    #2563EB;
+    --gold-soft:    rgba(37, 99, 235, 0.08);
 
     /* Tipografía — Inter como principal alineado con styles.css del home */
     --serif-stack:  "Inter", "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -43,18 +45,19 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --paper:        #0D0D0F;     /* graphite del brand kit */
+        --paper:        #0D0D0F;
         --paper-soft:   #101013;
         --surface:      #131316;
         --surface-mute: #18181b;
-        --ink:          #F5F5F3;     /* soft-white del brand kit */
+        --ink:          #F5F5F3;
         --ink-muted:    #b8b8c0;
         --ink-faint:    #A1A1AA;
         --rule:         #1d1d22;
         --rule-strong:  #2c2c33;
-        --gold:         #F5F5F3;
-        --gold-text:    #F5F5F3;
-        --gold-soft:    rgba(245, 245, 243, 0.08);
+        /* En dark mode el accent se ilumina ligeramente para mantener contraste */
+        --gold:         #3b82f6;
+        --gold-text:    #60a5fa;
+        --gold-soft:    rgba(59, 130, 246, 0.12);
     }
 }
 
@@ -80,6 +83,9 @@ html {
 body {
     font-family: var(--serif-stack);
     font-weight: 400;
+    /* Bumpear ligeramente el tamaño base — Inter es más estrecha que Space Grotesk,
+       1.05rem mejora la legibilidad de los párrafos largos legales. */
+    font-size: 1.05rem;
     line-height: 1.7;
     color: var(--ink);
     background: var(--paper);
@@ -172,9 +178,10 @@ img, svg { max-width: 100%; display: block; }
     padding: clamp(2.5rem, 6vw, var(--space-6)) clamp(1.25rem, 5vw, 2rem) var(--space-5);
 }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero (centrado) ---------- */
 .hero {
     margin-bottom: var(--space-5);
+    text-align: center;
 }
 
 .hero .eyebrow {
@@ -191,9 +198,10 @@ img, svg { max-width: 100%; display: block; }
 
 .hero .eyebrow::before {
     content: "";
-    width: 28px;
-    height: 1px;
+    width: 36px;
+    height: 2px;
     background: var(--gold);
+    border-radius: 2px;
 }
 
 .hero h1 {
@@ -202,7 +210,7 @@ img, svg { max-width: 100%; display: block; }
     line-height: 1.1;
     letter-spacing: -0.025em;
     color: var(--ink);
-    margin-bottom: 1rem;
+    margin: 0 auto 1rem;
     max-width: 22ch;
 }
 
@@ -258,9 +266,10 @@ img, svg { max-width: 100%; display: block; }
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 36px;
-    height: 1px;
+    width: 48px;
+    height: 2px;
     background: var(--gold);
+    border-radius: 2px;
 }
 
 .section h3 {
@@ -272,15 +281,8 @@ img, svg { max-width: 100%; display: block; }
     letter-spacing: -0.005em;
 }
 
-/* Drop cap discreto para la primera <p> de la sección "intro" */
-.section.intro p:first-of-type::first-letter {
-    font-size: 3.1em;
-    font-weight: 600;
-    float: left;
-    line-height: 0.9;
-    margin: 0.1em 0.18em 0 -0.04em;
-    color: var(--gold-text);
-}
+/* (Drop cap eliminada: las páginas legales son texto informativo simple,
+   no editorial. La primera letra de cada sección se trata como texto normal.) */
 
 /* ---------- Body type ---------- */
 .section p {
