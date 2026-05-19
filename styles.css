@@ -766,6 +766,13 @@ h2.section-title {
     .footer-grid {
         grid-template-columns: 1.4fr 1fr 1fr 1fr;
     }
+    /* Variante compacta para páginas de división que no listan apps publicadas
+       (Studio/Music/Creative) — solo Brand + Divisiones. El contacto está en
+       la sección CTA del cuerpo y en el footer-bottom; agregarlo aquí sería
+       redundante. */
+    .footer-grid--2 {
+        grid-template-columns: 1.4fr 1fr;
+    }
 }
 
 .footer-col h4 {
@@ -818,12 +825,13 @@ h2.section-title {
     gap: 0.5rem;
     color: var(--fg-faint);
     font-size: 0.82rem;
+    text-align: center;
 }
 
 @media (min-width: 768px) {
     .footer-bottom {
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
     }
 }
