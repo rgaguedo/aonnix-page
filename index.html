@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="theme-color" content="#0b0b0d" media="(prefers-color-scheme: dark)">
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0D0D0F" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#F5F5F3" media="(prefers-color-scheme: light)">
     <meta name="robots" content="index,follow">
     <title>Aonnix — Tecnología, contenido, audio y diseño</title>
     <meta name="description" content="Aonnix es un estudio multidisciplinario que une desarrollo de software, contenido, audio y diseño en proyectos de alto estándar.">
     <link rel="canonical" href="https://aonnix.com/">
 
-    <!-- Favicon e iconos. Para máxima compatibilidad con dispositivos antiguos
-         se puede generar apple-touch-icon.png 180x180 desde el SVG con
-         `rsvg-convert -w 180 -h 180 apple-touch-icon.svg -o apple-touch-icon.png`. -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.svg">
-    <link rel="mask-icon" href="/favicon.svg" color="#0e0e10">
+    <!-- Favicons del AONNIX Brand Kit Phase 1. Fuente de marca: 06_MARKETING/branding/AONNIX/phase-1/. -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/brand/favicons/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/brand/favicons/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/brand/favicons/apple-touch-icon.png">
+    <link rel="mask-icon" href="/favicon.svg" color="#0D0D0F">
 
     <!-- Open Graph. og-image.png es 1200x630 (compatible con Facebook, WhatsApp, Instagram, LinkedIn, Twitter). -->
     <meta property="og:type" content="website">
@@ -36,7 +36,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
 
     <script type="application/ld+json">
@@ -67,7 +67,9 @@
 <body>
     <header class="nav">
         <div class="nav-inner">
-            <a class="brand" href="/">Aonnix</a>
+            <a class="brand brand--wordmark" href="/" aria-label="AONNIX — inicio">
+                <span class="brand-text">AONNIX</span>
+            </a>
             <nav class="nav-links" aria-label="Navegación principal">
                 <a href="/dev/">Desarrollo</a>
                 <a href="/studio/">Estudio</a>
@@ -80,20 +82,79 @@
 
     <main>
         <section class="hero">
-            <div class="container">
-                <p class="hero-eyebrow">Estudio integral de productos y experiencias</p>
-                <h1>
-                    Construimos lo digital,<br>
-                    <span class="accent">contamos lo que importa.</span>
-                </h1>
-                <p class="hero-lead">
-                    Aonnix es una casa creativa y tecnológica. Diseñamos productos de software,
-                    producimos contenido, componemos audio y desarrollamos identidades de marca
-                    con un mismo criterio: claridad, calidad y propósito medible.
-                </p>
-                <div class="hero-actions">
-                    <a class="btn btn-primary" href="#divisiones">Conocer nuestras divisiones</a>
-                    <a class="btn btn-ghost" href="#contacto">Hablemos</a>
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <p class="hero-eyebrow">Ecosistema tecnológico y creativo</p>
+                    <h1>
+                        Construimos tecnología.<br>
+                        Creamos <span class="accent">impacto.</span>
+                    </h1>
+                    <p class="hero-lead">
+                        AONNIX es una casa premium de tecnología, contenido, audio y diseño.
+                        Diseñamos productos digitales, identidades de marca y experiencias
+                        con criterio modular: bloques que se conectan para construir soluciones
+                        escalables.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="#divisiones">Conoce más</a>
+                        <a class="btn btn-ghost" href="#contacto">Hablemos</a>
+                    </div>
+                </div>
+                <div class="hero-visual" aria-hidden="true">
+                    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" class="hero-cubes">
+                        <defs>
+                            <radialGradient id="hero-glow" cx="50%" cy="55%" r="50%">
+                                <stop offset="0%" stop-color="#2563EB" stop-opacity="0.35"/>
+                                <stop offset="60%" stop-color="#2563EB" stop-opacity="0.05"/>
+                                <stop offset="100%" stop-color="#2563EB" stop-opacity="0"/>
+                            </radialGradient>
+                        </defs>
+                        <!-- Soft glow behind cluster -->
+                        <rect width="500" height="500" fill="url(#hero-glow)"/>
+                        <!-- Cube cluster (back row, dimmer) -->
+                        <g opacity="0.55">
+                            <g transform="translate(120,180)">
+                                <polygon points="0,-40 35,-20 0,0 -35,-20" fill="#3b82f6"/>
+                                <polygon points="-35,-20 0,0 0,40 -35,20" fill="#1d4ed8"/>
+                                <polygon points="35,-20 0,0 0,40 35,20" fill="#2563EB"/>
+                            </g>
+                            <g transform="translate(380,180)">
+                                <polygon points="0,-40 35,-20 0,0 -35,-20" fill="#3b82f6"/>
+                                <polygon points="-35,-20 0,0 0,40 -35,20" fill="#1d4ed8"/>
+                                <polygon points="35,-20 0,0 0,40 35,20" fill="#2563EB"/>
+                            </g>
+                        </g>
+                        <!-- Mid row -->
+                        <g transform="translate(180,290)">
+                            <polygon points="0,-40 35,-20 0,0 -35,-20" fill="#3b82f6"/>
+                            <polygon points="-35,-20 0,0 0,40 -35,20" fill="#1d4ed8"/>
+                            <polygon points="35,-20 0,0 0,40 35,20" fill="#2563EB"/>
+                        </g>
+                        <g transform="translate(320,290)">
+                            <polygon points="0,-40 35,-20 0,0 -35,-20" fill="#3b82f6"/>
+                            <polygon points="-35,-20 0,0 0,40 -35,20" fill="#1d4ed8"/>
+                            <polygon points="35,-20 0,0 0,40 35,20" fill="#2563EB"/>
+                        </g>
+                        <!-- Front center hero cube (largest, glow) -->
+                        <g transform="translate(250,340) scale(1.4)">
+                            <polygon points="0,-40 35,-20 0,0 -35,-20" fill="#60a5fa"/>
+                            <polygon points="-35,-20 0,0 0,40 -35,20" fill="#1d4ed8"/>
+                            <polygon points="35,-20 0,0 0,40 35,20" fill="#2563EB"/>
+                            <polyline points="0,-40 35,-20 0,0 -35,-20 0,-40" fill="none" stroke="#93c5fd" stroke-width="0.8" opacity="0.5"/>
+                        </g>
+                        <!-- Top floating cube -->
+                        <g transform="translate(250,140)">
+                            <polygon points="0,-40 35,-20 0,0 -35,-20" fill="#3b82f6"/>
+                            <polygon points="-35,-20 0,0 0,40 -35,20" fill="#1d4ed8"/>
+                            <polygon points="35,-20 0,0 0,40 35,20" fill="#2563EB"/>
+                        </g>
+                        <!-- Wireframe accent cube (creative violet) -->
+                        <g transform="translate(410,360)" opacity="0.85">
+                            <polygon points="0,-30 26,-15 0,0 -26,-15" fill="none" stroke="#8B5CF6" stroke-width="1.5"/>
+                            <polygon points="-26,-15 0,0 0,30 -26,15" fill="none" stroke="#8B5CF6" stroke-width="1.5"/>
+                            <polygon points="26,-15 0,0 0,30 26,15" fill="none" stroke="#8B5CF6" stroke-width="1.5"/>
+                        </g>
+                    </svg>
                 </div>
             </div>
         </section>
@@ -139,36 +200,44 @@
 
         <section class="divisions" id="divisiones">
             <div class="container">
-                <p class="section-label">Divisiones</p>
-                <h2 class="section-title">Cuatro frentes, una misma visión.</h2>
+                <p class="section-label">Ecosistema de marca — Sub marcas</p>
+                <h2 class="section-title">Cuatro divisiones, una misma visión.</h2>
                 <div class="divisions-grid">
-                    <a class="division-card" href="/dev/">
+                    <a class="division-card is-dev" href="/dev/">
                         <div>
-                            <p class="num">01</p>
+                            <div class="division-mark">
+                                <span class="division-tag">Aonnix Dev</span>
+                            </div>
                             <h3>Desarrollo</h3>
-                            <p>Software, aplicaciones móviles y plataformas web nativas y multiplataforma.</p>
+                            <p>Software, apps móviles y plataformas web nativas. Productos digitales con criterio de ingeniería.</p>
                         </div>
                         <span class="arrow">Ver división &rarr;</span>
                     </a>
-                    <a class="division-card" href="/studio/">
+                    <a class="division-card is-studio" href="/studio/">
                         <div>
-                            <p class="num">02</p>
+                            <div class="division-mark">
+                                <span class="division-tag">Aonnix Studio</span>
+                            </div>
                             <h3>Estudio</h3>
-                            <p>Contenido, producción audiovisual y narrativa para marcas y productos.</p>
+                            <p>Contenido audiovisual, narrativa digital y producción editorial para marcas y productos.</p>
                         </div>
                         <span class="arrow">Ver división &rarr;</span>
                     </a>
-                    <a class="division-card" href="/music/">
+                    <a class="division-card is-music" href="/music/">
                         <div>
-                            <p class="num">03</p>
+                            <div class="division-mark">
+                                <span class="division-tag">Aonnix Music</span>
+                            </div>
                             <h3>Música</h3>
-                            <p>Diseño sonoro, identidad de audio y experiencias musicales originales.</p>
+                            <p>Diseño sonoro, identidad de audio y experiencias musicales originales para productos.</p>
                         </div>
                         <span class="arrow">Ver división &rarr;</span>
                     </a>
-                    <a class="division-card" href="/creative/">
+                    <a class="division-card is-creative" href="/creative/">
                         <div>
-                            <p class="num">04</p>
+                            <div class="division-mark">
+                                <span class="division-tag">Aonnix Creative</span>
+                            </div>
                             <h3>Creatividad</h3>
                             <p>Diseño visual, sistemas de marca y dirección artística. Hogar del proyecto creativo <em>Oculyxz</em>.</p>
                         </div>

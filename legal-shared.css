@@ -4,23 +4,23 @@
    ========================================================= */
 
 :root {
-    /* Paleta monocroma neutra — coherente con sitio principal aonnix.com */
-    --paper:        #ffffff;
-    --paper-soft:   #f6f6f7;
+    /* Paleta alineada con AONNIX Phase 1 Brand Kit (Minimal Tech Modular) — sitio aonnix.com */
+    --paper:        #F5F5F3;        /* soft-white del brand kit */
+    --paper-soft:   #ffffff;
     --surface:      #fafafa;
     --surface-mute: #f0f0f1;
-    --ink:          #0e0e10;
-    --ink-muted:    #5b5b62;
-    --ink-faint:    #8a8a92;
+    --ink:          #0D0D0F;        /* graphite del brand kit */
+    --ink-muted:    #4b4b52;
+    --ink-faint:    #A1A1AA;        /* cold-silver del brand kit */
     --rule:         #e6e6ea;
     --rule-strong:  #cfcfd4;
-    /* "gold" se conserva como variable por compatibilidad pero ahora es ink puro */
-    --gold:         #0e0e10;
-    --gold-text:    #0e0e10;
-    --gold-soft:    rgba(14, 14, 16, 0.05);
+    /* "gold" se mantiene como compatibility shim — ahora apunta a graphite */
+    --gold:         #0D0D0F;
+    --gold-text:    #0D0D0F;
+    --gold-soft:    rgba(13, 13, 15, 0.05);
 
-    /* Tipografía */
-    --serif-stack:  "Space Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    /* Tipografía — Inter como principal alineado con styles.css del home */
+    --serif-stack:  "Inter", "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     --mono-stack:   ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
 
     /* Espaciado */
@@ -43,18 +43,18 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --paper:        #0b0b0d;
+        --paper:        #0D0D0F;     /* graphite del brand kit */
         --paper-soft:   #101013;
         --surface:      #131316;
         --surface-mute: #18181b;
-        --ink:          #f4f4f6;
+        --ink:          #F5F5F3;     /* soft-white del brand kit */
         --ink-muted:    #b8b8c0;
-        --ink-faint:    #9a9aa1;
+        --ink-faint:    #A1A1AA;
         --rule:         #1d1d22;
         --rule-strong:  #2c2c33;
-        --gold:         #f4f4f6;
-        --gold-text:    #f4f4f6;
-        --gold-soft:    rgba(244, 244, 246, 0.08);
+        --gold:         #F5F5F3;
+        --gold-text:    #F5F5F3;
+        --gold-soft:    rgba(245, 245, 243, 0.08);
     }
 }
 

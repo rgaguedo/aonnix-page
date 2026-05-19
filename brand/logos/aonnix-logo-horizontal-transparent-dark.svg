@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" fill="none" role="img" aria-label="AONNIX">
+  <!-- Isotype: modular asymmetric A. Left leg slim (premium blue), right leg wider (soft-white). Both meet at apex (210,60). -->
+  <polygon points="182,60 210,60 95,300 67,300" fill="#2563EB"/>
+  <polygon points="210,60 262,60 360,300 308,300" fill="#F5F5F3"/>
+  <!-- Subtle blue crossbar accent (negative-space inspired) -->
+  <rect x="155" y="218" width="100" height="14" fill="#2563EB" opacity="0.9"/>
+  <!-- AONNIX wordmark -->
+  <text x="410" y="232" fill="#F5F5F3" font-family="Inter, Manrope, system-ui, sans-serif" font-size="120" font-weight="700" letter-spacing="6">AONNIX</text>
+  <!-- Blue diagonal accent near the X letter (signature flair) -->
+  <rect x="900" y="90" width="12" height="56" transform="rotate(42 900 90)" fill="#2563EB"/>
+</svg>

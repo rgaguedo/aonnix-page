@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="theme-color" content="#0b0b0d" media="(prefers-color-scheme: dark)">
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0D0D0F" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#F5F5F3" media="(prefers-color-scheme: light)">
     <meta name="robots" content="index,follow">
     <title>Aonnix Creative — Diseño y branding</title>
     <meta name="description" content="Identidad visual, sistemas de diseño e interfaces que comunican consistencia y profesionalismo.">
     <link rel="canonical" href="https://aonnix.com/creative/">
 
-    <!-- Favicon e iconos. Para máxima compatibilidad con dispositivos antiguos
-         se puede generar apple-touch-icon.png 180x180 desde el SVG con
-         `rsvg-convert -w 180 -h 180 apple-touch-icon.svg -o apple-touch-icon.png`. -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.svg">
-    <link rel="mask-icon" href="/favicon.svg" color="#0e0e10">
+    <!-- Favicons del AONNIX Brand Kit Phase 1. Fuente de marca: 06_MARKETING/branding/AONNIX/phase-1/. -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/brand/favicons/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/brand/favicons/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/brand/favicons/apple-touch-icon.png">
+    <link rel="mask-icon" href="/favicon.svg" color="#0D0D0F">
 
     <!-- Open Graph. og-image.png es 1200x630 (compatible con todas las redes). -->
     <meta property="og:type" content="website">
@@ -36,13 +36,16 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
+    <style>:root{--accent: #2DD4BF; --accent-soft: #14b8a6;}</style>
 </head>
 <body>
     <header class="nav">
         <div class="nav-inner">
-            <a class="brand" href="/">Aonnix</a>
+            <a class="brand brand--wordmark" href="/" aria-label="AONNIX — inicio">
+                <span class="brand-text">AONNIX</span>
+            </a>
             <nav class="nav-links" aria-label="Navegación principal">
                 <a href="/dev/">Desarrollo</a>
                 <a href="/studio/">Estudio</a>
