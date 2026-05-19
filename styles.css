@@ -647,6 +647,14 @@ h2.section-title {
     margin-top: 0.75rem;
 }
 
+.footer-legal-note {
+    color: var(--fg-faint);
+    font-size: 0.82rem;
+    line-height: 1.5;
+    max-width: 42ch;
+    margin-top: 0.5rem;
+}
+
 .footer-bottom {
     margin-top: 2.5rem;
     padding-top: 1.5rem;
