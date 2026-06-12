@@ -66,4 +66,22 @@
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
+  <url>
+        <loc>https://aonnix.com/legal/patitas-mascota-privacy/</loc>
+        <lastmod>2026-05-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+  <url>
+        <loc>https://aonnix.com/support/patitas-mascota/</loc>
+        <lastmod>2026-05-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+  <url>
+        <loc>https://aonnix.com/terms/patitas-mascota/</loc>
+        <lastmod>2026-05-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
 </urlset>
