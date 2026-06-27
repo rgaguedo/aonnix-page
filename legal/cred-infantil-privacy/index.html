@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Política de Privacidad — CRED Infantil · Aonnix Dev</title>
-    <meta name="description" content="Política de privacidad de CRED Infantil 0–5: almacenamiento local en el dispositivo, sin servidores propios, sin tracking ni publicidad.">
+    <meta name="description" content="Política de privacidad de CRED Infantil 0–5: los datos de salud del niño se guardan solo en el dispositivo; inicio de sesión opcional (Firebase) y compra (RevenueCat), sin tracking ni publicidad.">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="robots" content="index,follow">
     <meta name="theme-color" content="#F5F5F3" media="(prefers-color-scheme: light)">
@@ -15,7 +15,7 @@
     <meta property="og:locale" content="es_PE">
     <meta property="og:url" content="https://aonnix.com/legal/cred-infantil-privacy/">
     <meta property="og:title" content="Política de Privacidad — CRED Infantil">
-    <meta property="og:description" content="Almacenamiento 100% local. Sin servidores propios, sin tracking, sin publicidad.">
+    <meta property="og:description" content="Datos de salud del niño 100% locales. Inicio de sesión opcional y compra gestionada de forma segura, sin tracking ni publicidad.">
     <meta property="og:image" content="https://aonnix.com/og-image.png">
 
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
@@ -47,7 +47,7 @@
             <div class="hero">
                 <div class="eyebrow">CRED Infantil 0–5</div>
                 <h1>Política de Privacidad</h1>
-                <div class="meta">Última actualización · 16 de junio de 2026</div>
+                <div class="meta">Última actualización · 27 de junio de 2026</div>
             </div>
 
             <section class="section intro with-margin-num">
@@ -59,16 +59,16 @@
             <section class="section with-margin-num">
                 <span class="num">02</span>
                 <h2>Información que recopilamos</h2>
-                <p>La aplicación <strong>no transmite datos a servidores</strong>. Toda la información ingresada por el usuario se almacena exclusivamente en el dispositivo y no es accesible de forma remota por Aonnix Dev ni por terceros.</p>
+                <p>Los <strong>datos de salud de tu niño o niña</strong> (perfiles, mediciones, vacunas, fotos) se almacenan <strong>exclusivamente en el dispositivo</strong> y <strong>nunca se suben a la nube</strong> ni son accesibles de forma remota por Aonnix Dev ni por terceros.</p>
                 <p>De forma local, en el dispositivo del usuario, la app puede almacenar:</p>
                 <ul>
                     <li>Perfiles de niños o niñas registrados por el usuario (nombre, fecha de nacimiento, sexo).</li>
-                    <li>Registros de vacunas aplicadas a cada perfil (vacuna y fecha).</li>
+                    <li>Mediciones de crecimiento y registros de vacunas de cada perfil.</li>
                     <li>Foto de perfil del niño o niña, si el usuario decide añadirla.</li>
-                    <li>Estado de la compra Premium (verificado mediante Apple StoreKit).</li>
-                    <li>Preferencia de haber aceptado los avisos médicos mostrados en la aplicación.</li>
+                    <li>Preferencias de la aplicación (avisos aceptados, recordatorios).</li>
                 </ul>
-                <p>El usuario puede eliminar esta información en cualquier momento desde la propia app.</p>
+                <p>Adicionalmente, <strong>solo si el usuario decide iniciar sesión</strong> (función opcional; ver la sección 7), se recopilan datos mínimos de cuenta para gestionar y sincronizar la compra premium entre dispositivos y plataformas: <strong>correo electrónico, nombre e identificador de usuario</strong>. Estos datos de cuenta <strong>no incluyen ningún dato de salud del niño o niña</strong>. La app es totalmente utilizable <strong>sin iniciar sesión</strong>.</p>
+                <p>El usuario puede eliminar la información local desde la app y, cuando exista una cuenta, eliminarla desde Ajustes → Cuenta.</p>
             </section>
 
             <section class="section with-margin-num">
@@ -83,7 +83,8 @@
                 <ul>
                     <li>Almacenamiento local en el dispositivo.</li>
                     <li>Funcionamiento offline-first.</li>
-                    <li>Sin sincronización con servidores.</li>
+                    <li>Los datos de salud no se sincronizan con servidores; permanecen en el dispositivo.</li>
+                    <li>Inicio de sesión opcional: si se usa, los datos de cuenta (correo, nombre, identificador) se procesan vía Firebase Authentication solo para gestionar la compra; se transmiten de forma cifrada (HTTPS).</li>
                     <li>Permisos solicitados sólo en contexto: cámara y galería de fotos para la foto de perfil del niño o niña (opcional).</li>
                     <li>Eliminación: el usuario puede eliminar perfiles individuales desde la app; al eliminar un perfil, se borra también su foto del dispositivo.</li>
                     <li>Las fotos de perfil añadidas voluntariamente por el usuario se guardan en el directorio Documents del dispositivo. La aplicación no realiza copia de seguridad propia ni utiliza iCloud. Si el usuario tiene activado el backup nativo de iOS (Finder, iTunes o iCloud Backup), esas fotos podrán formar parte de dicho backup gestionado por el sistema operativo.</li>
@@ -93,19 +94,25 @@
             <section class="section with-margin-num">
                 <span class="num">05</span>
                 <h2>Compras dentro de la aplicación</h2>
-                <p>La aplicación ofrece una compra única opcional por medio de la pasarela de pago de la tienda de aplicaciones. Aonnix Dev no tiene acceso a información financiera del usuario.</p>
+                <p>La aplicación ofrece una compra premium opcional procesada por la tienda de aplicaciones (App Store / Google Play). La validación y gestión del estado de la compra se realiza mediante <strong>RevenueCat</strong>, que permite recuperar la compra entre dispositivos y plataformas. Aonnix Dev no tiene acceso a información financiera (tarjetas o datos de pago) del usuario.</p>
             </section>
 
             <section class="section with-margin-num">
                 <span class="num">06</span>
                 <h2>Datos de menores</h2>
-                <p>La aplicación está destinada a ser utilizada por adultos responsables. No se recopilan datos personales de menores con fines remotos.</p>
+                <p>La aplicación está destinada a ser utilizada por <strong>adultos</strong> (padres, cuidadores y personal de salud). Los datos del niño o niña los ingresa un adulto y permanecen en el dispositivo: <strong>no se recopilan datos de menores con fines remotos</strong>. El inicio de sesión opcional usa únicamente datos de cuenta del adulto (correo y nombre) y <strong>nunca datos del menor</strong>.</p>
             </section>
 
             <section class="section with-margin-num">
                 <span class="num">07</span>
                 <h2>Servicios de terceros</h2>
-                <p>El único tercero involucrado en el funcionamiento de la aplicación es <strong>Apple StoreKit</strong>, utilizado exclusivamente para procesar la compra única opcional ("CRED Premium"). La aplicación no integra servicios de publicidad, analítica, atribución, tracking, telemetría ni notificaciones push. No utiliza SDKs como Firebase, Google Analytics, Meta, Mixpanel, Sentry ni equivalentes.</p>
+                <p>La aplicación utiliza los siguientes servicios de terceros, únicamente para las funciones indicadas:</p>
+                <ul>
+                    <li><strong>Apple StoreKit / Google Play Billing</strong>: para procesar la compra premium opcional.</li>
+                    <li><strong>RevenueCat</strong>: para validar y gestionar el estado de la compra premium y permitir su recuperación entre dispositivos y plataformas.</li>
+                    <li><strong>Firebase Authentication (Google)</strong>: solo si el usuario decide iniciar sesión (con Apple o Google), para identificar la cuenta y sincronizar la compra. Procesa correo electrónico, nombre e identificador de usuario.</li>
+                </ul>
+                <p>La aplicación <strong>no</strong> integra servicios de publicidad, atribución, tracking ni telemetría con fines de marketing, y <strong>no</strong> comparte los datos de salud del niño o niña con ningún tercero.</p>
             </section>
 
             <section class="section with-margin-num">
@@ -136,7 +143,7 @@
                     <li><strong>Cámara</strong>: para tomar la foto de perfil del niño o niña. Es opcional.</li>
                     <li><strong>Galería de Fotos</strong>: para seleccionar una foto de perfil ya existente para el niño o niña. Es opcional.</li>
                 </ul>
-                <p>En su versión actual, la aplicación <strong>no solicita</strong> acceso a ubicación, contactos, micrófono ni notificaciones. Tampoco realiza llamadas a servicios de red más allá de la pasarela de pago de Apple StoreKit.</p>
+                <p>En su versión actual, la aplicación <strong>no solicita</strong> acceso a ubicación, contactos ni micrófono. Puede solicitar permiso de <strong>notificaciones</strong> si el usuario activa los recordatorios de controles. Las únicas llamadas de red son a la pasarela de pago de la tienda, a <strong>RevenueCat</strong> (validación de la compra) y a <strong>Firebase Authentication</strong> (solo si el usuario inicia sesión).</p>
             </section>
 
             <div class="divider" aria-hidden="true">
