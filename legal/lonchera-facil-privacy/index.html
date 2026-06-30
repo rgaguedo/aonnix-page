@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Política de Privacidad — Lonchera Fácil · Aonnix Dev</title>
-    <meta name="description" content="Política de privacidad de Lonchera Fácil: almacenamiento 100% local, sin servidores propios, sin tracking, sin publicidad.">
+    <meta name="description" content="Política de privacidad de Lonchera Fácil: tus loncheras y los datos de tus hijos se guardan solo en el dispositivo; inicio de sesión opcional (Firebase) y compra (RevenueCat), sin tracking ni publicidad.">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="robots" content="index,follow">
     <meta name="theme-color" content="#F5F5F3" media="(prefers-color-scheme: light)">
@@ -15,7 +15,7 @@
     <meta property="og:locale" content="es_PE">
     <meta property="og:url" content="https://aonnix.com/legal/lonchera-facil-privacy/">
     <meta property="og:title" content="Política de Privacidad — Lonchera Fácil">
-    <meta property="og:description" content="Almacenamiento 100% local. Sin servidores propios, sin tracking, sin publicidad.">
+    <meta property="og:description" content="Datos de tus loncheras 100% locales. Inicio de sesión opcional y compra gestionada de forma segura, sin tracking ni publicidad.">
     <meta property="og:image" content="https://aonnix.com/og-image.png">
 
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
@@ -47,7 +47,7 @@
             <div class="hero">
                 <div class="eyebrow">Lonchera Fácil</div>
                 <h1>Política de Privacidad</h1>
-                <div class="meta">Última actualización · 16 de junio de 2026</div>
+                <div class="meta">Última actualización · 29 de junio de 2026</div>
             </div>
 
             <section class="section intro with-margin-num">
@@ -60,7 +60,7 @@
             <section class="section with-margin-num">
                 <span class="num">02</span>
                 <h2>Información que recopilamos</h2>
-                <p>La aplicación <strong>no transmite datos a servidores propios ni de terceros</strong>. Toda la información que ingresas se almacena exclusivamente en tu iPhone o iPad y no es accesible de forma remota por Aonnix Dev ni por nadie más.</p>
+                <p>Los <strong>datos de tus loncheras y los perfiles de tus hijos</strong> se almacenan <strong>exclusivamente en tu iPhone o iPad</strong> y no son accesibles de forma remota por Aonnix Dev ni por terceros.</p>
                 <p>De forma local, en tu dispositivo, la app puede almacenar:</p>
                 <ul>
                     <li>Perfiles de niños o niñas que tú registres (nombre, etapa escolar — preescolar o primaria, año de nacimiento opcional, alergias y preferencias alimentarias).</li>
@@ -69,10 +69,11 @@
                     <li>Listas de compras que generes a partir de los planes.</li>
                     <li>Combinaciones marcadas como favoritas.</li>
                     <li>Hora del recordatorio nocturno y demás preferencias de notificaciones.</li>
-                    <li>Estado de la compra Premium (verificado mediante Apple StoreKit).</li>
+                    <li>Estado de la compra Premium (verificado mediante Apple StoreKit y RevenueCat).</li>
                     <li>Preferencia de haber aceptado los avisos alimentarios mostrados en la aplicación.</li>
                 </ul>
-                <p>Puedes eliminar toda esta información en cualquier momento desde la propia app, en Ajustes › "Eliminar todos los datos".</p>
+                <p>Adicionalmente, <strong>solo si el usuario decide iniciar sesión</strong> (función opcional; ver la sección «Servicios de terceros»), se recopilan datos mínimos de cuenta para gestionar y sincronizar la compra premium entre dispositivos y plataformas: <strong>correo electrónico, nombre e identificador de usuario</strong>. Estos datos de cuenta <strong>no incluyen los datos de las loncheras ni de los niños</strong>. La app es totalmente utilizable <strong>sin iniciar sesión</strong>.</p>
+                <p>Puedes eliminar toda esta información en cualquier momento desde la propia app, en Ajustes › "Eliminar todos los datos". Si creaste una cuenta, puedes eliminarla desde Ajustes › Cuenta.</p>
             </section>
 
             <section class="section with-margin-num">
@@ -86,7 +87,8 @@
                 <h2>Almacenamiento y seguridad</h2>
                 <ul>
                     <li>Almacenamiento 100% local en tu dispositivo.</li>
-                    <li>Funcionamiento offline-first: la app no requiere conexión a internet salvo para comunicarse con Apple StoreKit durante una compra o restauración de compras.</li>
+                    <li>Funcionamiento offline-first: la app no requiere conexión a internet salvo para comunicarse con la tienda (Apple StoreKit), con RevenueCat (validación de la compra) y, solo si inicias sesión, con Firebase Authentication.</li>
+                    <li>Inicio de sesión opcional: si se usa, los datos de cuenta (correo, nombre, identificador) se procesan vía Firebase Authentication solo para gestionar la compra; se transmiten de forma cifrada (HTTPS).</li>
                     <li>Sin sincronización con servidores propios. La aplicación no realiza copia de seguridad propia. Si tienes activado el backup nativo de iOS (iCloud Backup), tus datos podrán formar parte de dicho backup gestionado por el sistema operativo.</li>
                     <li>Permisos solicitados sólo en contexto: cámara y galería de fotos exclusivamente para la foto de perfil del niño o niña, si decides añadirla. La foto se guarda en el directorio Documents del dispositivo.</li>
                     <li>Notificaciones locales: te recordamos preparar la lonchera la noche anterior y te avisamos cuando tu lista de compras esté lista. No usamos notificaciones push remotas.</li>
@@ -97,7 +99,7 @@
             <section class="section with-margin-num">
                 <span class="num">05</span>
                 <h2>Compras dentro de la aplicación</h2>
-                <p>Lonchera Fácil ofrece una versión Premium con dos opciones de compra: una suscripción anual con 7 días de prueba gratuita y un pago único de por vida (lifetime). Las transacciones se procesan a través de Apple StoreKit. Aonnix Dev no tiene acceso a información financiera, números de tarjeta ni datos de pago del usuario.</p>
+                <p>Lonchera Fácil ofrece una versión Premium con dos opciones de compra: una suscripción anual con 7 días de prueba gratuita y un pago único de por vida (lifetime). Las transacciones se procesan a través de Apple StoreKit, y la validación y gestión del estado de la compra se realiza mediante <strong>RevenueCat</strong>, que permite recuperar la compra entre dispositivos y plataformas. Aonnix Dev no tiene acceso a información financiera, números de tarjeta ni datos de pago del usuario.</p>
                 <p>Ambas opciones permiten Family Sharing: los miembros de tu familia configurada en Apple ID pueden acceder a las funciones Premium sin pagos adicionales.</p>
             </section>
 
@@ -124,23 +126,35 @@
             <section class="section with-margin-num">
                 <span class="num">08</span>
                 <h2>Sin tracking ni publicidad</h2>
-                <p>Lonchera Fácil <strong>no realiza tracking del usuario</strong> (<code>NSPrivacyTracking=false</code>), no muestra publicidad y no incluye SDKs de terceros (sin Firebase, sin Google Analytics, sin Meta SDK, sin Mixpanel, sin Sentry ni equivalentes).</p>
+                <p>Lonchera Fácil <strong>no realiza tracking del usuario</strong> (<code>NSPrivacyTracking=false</code>), no muestra publicidad y no integra SDKs de analítica, atribución ni marketing (sin Google Analytics, sin Meta SDK, sin Mixpanel, sin Sentry ni equivalentes). El inicio de sesión opcional (<strong>Firebase Authentication</strong>) y la gestión de la compra (<strong>RevenueCat</strong>) se usan únicamente para recuperar tu compra premium entre dispositivos; <strong>no</strong> son tracking publicitario ni perfilado.</p>
             </section>
 
             <section class="section with-margin-num">
                 <span class="num">09</span>
+                <h2>Servicios de terceros</h2>
+                <p>La aplicación utiliza los siguientes servicios de terceros, únicamente para las funciones indicadas:</p>
+                <ul>
+                    <li><strong>Apple StoreKit / Google Play Billing</strong>: para procesar la compra premium opcional.</li>
+                    <li><strong>RevenueCat</strong>: para validar y gestionar el estado de la compra premium y permitir su recuperación entre dispositivos y plataformas.</li>
+                    <li><strong>Firebase Authentication (Google)</strong>: solo si el usuario decide iniciar sesión (con Apple o Google), para identificar la cuenta y sincronizar la compra. Procesa correo electrónico, nombre e identificador de usuario.</li>
+                </ul>
+                <p>La aplicación <strong>no</strong> integra servicios de publicidad, atribución, tracking ni telemetría con fines de marketing, y <strong>no</strong> comparte los datos de tus loncheras ni de tus hijos con ningún tercero.</p>
+            </section>
+
+            <section class="section with-margin-num">
+                <span class="num">10</span>
                 <h2>Cambios en esta política</h2>
                 <p>Si se realizan cambios significativos a esta política, se publicarán en esta misma URL con la fecha de actualización. El uso continuado de la app después de un cambio implica la aceptación de la versión actualizada.</p>
             </section>
 
             <section class="section with-margin-num">
-                <span class="num">10</span>
+                <span class="num">11</span>
                 <h2>Jurisdicción</h2>
                 <p>Esta aplicación es desarrollada en Lima, Perú. Aplica la Ley N° 29733 (Ley de Protección de Datos Personales) cuando corresponda. Para mercados internacionales, la app cumple con principios de privacidad por diseño consistentes con COPPA y GDPR al no recolectar ni transmitir datos personales.</p>
             </section>
 
             <section class="section with-margin-num">
-                <span class="num">11</span>
+                <span class="num">12</span>
                 <h2>Responsable y contacto</h2>
                 <p>Esta aplicación es desarrollada y operada por <strong>AONNIX E.I.R.L.</strong>, entidad legal constituida en el Perú (RUC 20615881768), con domicilio en Plaza Padre Constancio Bollar 313, San Isidro, Lima 15073. <strong>Aonnix Dev</strong> es la división de software de AONNIX E.I.R.L.</p>
                 <p>Si tienes preguntas sobre esta política, escribe a <a href="mailto:support@aonnix.com">support@aonnix.com</a>.</p>
