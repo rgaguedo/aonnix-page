@@ -47,7 +47,7 @@
             <div class="hero">
                 <div class="eyebrow">CRED Infantil 0–5</div>
                 <h1>Política de Privacidad</h1>
-                <div class="meta">Última actualización · 27 de junio de 2026</div>
+                <div class="meta">Última actualización · 2 de julio de 2026</div>
             </div>
 
             <section class="section intro with-margin-num">
@@ -85,9 +85,9 @@
                     <li>Funcionamiento offline-first.</li>
                     <li>Los datos de salud no se sincronizan con servidores; permanecen en el dispositivo.</li>
                     <li>Inicio de sesión opcional: si se usa, los datos de cuenta (correo, nombre, identificador) se procesan vía Firebase Authentication solo para gestionar la compra; se transmiten de forma cifrada (HTTPS).</li>
-                    <li>Permisos solicitados sólo en contexto: cámara y galería de fotos para la foto de perfil del niño o niña (opcional).</li>
+                    <li>Permisos solicitados sólo en contexto: acceso a fotos (selector del sistema) —y, en iOS, opcionalmente la cámara— para la foto de perfil del niño o niña (opcional).</li>
                     <li>Eliminación: el usuario puede eliminar perfiles individuales desde la app; al eliminar un perfil, se borra también su foto del dispositivo.</li>
-                    <li>Las fotos de perfil añadidas voluntariamente por el usuario se guardan en el directorio Documents del dispositivo. La aplicación no realiza copia de seguridad propia ni utiliza iCloud. Si el usuario tiene activado el backup nativo de iOS (Finder, iTunes o iCloud Backup), esas fotos podrán formar parte de dicho backup gestionado por el sistema operativo.</li>
+                    <li>Las fotos de perfil añadidas voluntariamente por el usuario se guardan en el almacenamiento privado de la aplicación en el dispositivo. La aplicación no realiza copia de seguridad propia en la nube. En <strong>Android</strong>, la base de datos y las fotos del niño o niña se <strong>excluyen de la copia de seguridad en la nube</strong> (Auto Backup / Google Drive); pueden transferirse directamente al cambiar de teléfono mediante la transferencia dispositivo a dispositivo del sistema. En <strong>iOS</strong>, si el usuario tiene activado el backup nativo (Finder, iTunes o iCloud Backup), esas fotos podrán formar parte de dicho backup gestionado por el sistema operativo.</li>
                 </ul>
             </section>
 
@@ -140,8 +140,7 @@
                 <h2>Permisos del dispositivo</h2>
                 <p>La aplicación solicita los siguientes permisos únicamente en contexto, y sólo cuando el usuario inicia la acción correspondiente:</p>
                 <ul>
-                    <li><strong>Cámara</strong>: para tomar la foto de perfil del niño o niña. Es opcional.</li>
-                    <li><strong>Galería de Fotos</strong>: para seleccionar una foto de perfil ya existente para el niño o niña. Es opcional.</li>
+                    <li><strong>Fotos</strong>: para elegir la foto de perfil del niño o niña. En <strong>Android</strong>, la app usa el selector de fotos del sistema, que <strong>no requiere permiso</strong> de almacenamiento. En <strong>iOS</strong>, puede solicitarse acceso a la galería de fotos o a la cámara. Es opcional.</li>
                 </ul>
                 <p>En su versión actual, la aplicación <strong>no solicita</strong> acceso a ubicación, contactos ni micrófono. Puede solicitar permiso de <strong>notificaciones</strong> si el usuario activa los recordatorios de controles. Las únicas llamadas de red son a la pasarela de pago de la tienda, a <strong>RevenueCat</strong> (validación de la compra) y a <strong>Firebase Authentication</strong> (solo si el usuario inicia sesión).</p>
             </section>
