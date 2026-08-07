@@ -609,6 +609,8 @@ h2.section-title {
     margin: 0.85rem 0 0.95rem;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .appstore-badge {
