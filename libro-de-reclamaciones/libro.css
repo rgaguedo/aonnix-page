@@ -1,0 +1,463 @@
+/* =========================================================
+   Libro de Reclamaciones — AONNIX E.I.R.L.
+   Hereda los tokens de legal-shared.css (paleta, tipografía,
+   espaciado). Aquí solo vive lo que el formulario necesita.
+   Vanilla, sin dependencias, claro y oscuro.
+   ========================================================= */
+
+/* legal-shared.css fija la columna en el ancho óptimo de lectura (38rem), que
+   es lo correcto para prosa y estrecho para un formulario de dos columnas.
+   libro.css solo se carga en esta página, así que la ampliación no se escapa. */
+.page .shell,
+.page .page-footer { max-width: 52rem; }
+
+.lr-bajada {
+    max-width: var(--measure);
+    color: var(--ink-muted);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    margin: var(--space-2) 0 0;
+}
+
+/* ---------- proveedor (sección fija del Anexo I) ---------- */
+.lr-proveedor {
+    margin: var(--space-5) 0 var(--space-4);
+    padding: var(--space-3);
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+}
+
+.lr-titulo-seccion {
+    margin: 0 0 var(--space-2);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-text);
+    font-weight: 600;
+}
+
+.lr-datos-proveedor { margin: 0; display: grid; gap: var(--space-2); }
+@media (min-width: 40rem) { .lr-datos-proveedor { grid-template-columns: 1fr 1fr; } }
+.lr-datos-proveedor dt {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    margin-bottom: 2px;
+}
+.lr-datos-proveedor dd { margin: 0; color: var(--ink); font-weight: 500; }
+
+/* ---------- reclamo vs. queja ---------- */
+.lr-definiciones {
+    display: grid;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+}
+@media (min-width: 40rem) { .lr-definiciones { grid-template-columns: 1fr 1fr; } }
+.lr-definiciones > div {
+    padding: var(--space-2) var(--space-3);
+    border-left: 3px solid var(--gold);
+    background: var(--gold-soft);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+.lr-definiciones h3 { margin: 0 0 4px; font-size: 0.9375rem; color: var(--ink); }
+.lr-definiciones p { margin: 0; font-size: 0.875rem; color: var(--ink-muted); line-height: 1.6; }
+
+/* ---------- aviso de no habilitado ---------- */
+.lr-aviso {
+    margin: var(--space-3) 0;
+    padding: var(--space-3);
+    border: 1px solid #d97706;
+    background: rgba(217, 119, 6, 0.08);
+    border-radius: var(--radius);
+}
+.lr-aviso p { margin: 0 0 var(--space-1); color: var(--ink); }
+.lr-aviso p:last-child { margin-bottom: 0; }
+
+/* ---------- formulario ---------- */
+.lr-formulario { margin-top: var(--space-4); }
+
+.lr-bloque {
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    padding: var(--space-3);
+    margin: 0 0 var(--space-4);
+    background: var(--paper-soft);
+}
+
+.lr-bloque legend {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
+    margin-left: -10px;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.lr-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.lr-campo { margin-bottom: var(--space-3); }
+.lr-campo:last-child { margin-bottom: 0; }
+
+.lr-fila { display: grid; gap: var(--space-3); }
+@media (min-width: 40rem) { .lr-fila { grid-template-columns: 1fr 1fr; } }
+
+.lr-campo label,
+.lr-etiqueta-grupo {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.lr-campo abbr {
+    color: var(--gold-text);
+    text-decoration: none;
+    border: 0;
+    margin-left: 2px;
+}
+.lr-opcional { font-weight: 400; color: var(--ink-faint); }
+
+.lr-campo input[type="text"],
+.lr-campo input[type="tel"],
+.lr-campo input[type="email"],
+.lr-campo select,
+.lr-campo textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 12px;
+    font-family: inherit;
+    font-size: 1rem;           /* 16px: por debajo, iOS hace zoom al enfocar */
+    line-height: 1.5;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius-sm);
+    transition: border-color var(--t-fast), box-shadow var(--t-fast);
+    -webkit-appearance: none;
+    appearance: none;
+}
+.lr-campo textarea { resize: vertical; min-height: 6rem; }
+
+.lr-campo select {
+    background-image: linear-gradient(45deg, transparent 50%, var(--ink-faint) 50%),
+                      linear-gradient(135deg, var(--ink-faint) 50%, transparent 50%);
+    background-position: calc(100% - 18px) center, calc(100% - 13px) center;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+    padding-right: 36px;
+}
+
+.lr-campo input:focus-visible,
+.lr-campo select:focus-visible,
+.lr-campo textarea:focus-visible {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px var(--gold-soft);
+}
+
+.lr-campo [aria-invalid="true"] { border-color: #dc2626; }
+.lr-campo [aria-invalid="true"]:focus-visible {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.14);
+}
+
+.lr-pista {
+    margin: 6px 0 0;
+    font-size: 0.8125rem;
+    color: var(--ink-faint);
+    line-height: 1.5;
+}
+.lr-cuenta { font-variant-numeric: tabular-nums; }
+
+.lr-fallo {
+    margin: 6px 0 0;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #dc2626;
+    line-height: 1.5;
+}
+
+/* ---------- opciones ---------- */
+.lr-opciones { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+.lr-opciones--anchas { display: grid; gap: var(--space-1); }
+@media (min-width: 40rem) { .lr-opciones--anchas { grid-template-columns: 1fr 1fr; } }
+
+.lr-opciones .lr-opcion {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 0;
+    padding: 12px 14px;
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius-sm);
+    background: var(--paper);
+    cursor: pointer;
+    font-weight: 400;
+    transition: border-color var(--t-fast), background var(--t-fast);
+}
+.lr-opciones .lr-opcion:hover { border-color: var(--gold); }
+.lr-opciones .lr-opcion input { margin: 2px 0 0; accent-color: var(--gold); flex-shrink: 0; }
+.lr-opciones .lr-opcion span { display: block; font-size: 0.9375rem; color: var(--ink); margin-bottom: 0; }
+.lr-opciones .lr-opcion strong { display: block; font-weight: 600; }
+.lr-opciones .lr-opcion em {
+    display: block;
+    margin-top: 2px;
+    font-style: normal;
+    font-size: 0.8125rem;
+    color: var(--ink-muted);
+}
+.lr-opciones .lr-opcion:has(input:checked) { border-color: var(--gold); background: var(--gold-soft); }
+.lr-opciones .lr-opcion:focus-within { box-shadow: 0 0 0 3px var(--gold-soft); border-color: var(--gold); }
+/* Las opciones cortas (Producto / Servicio) no deben partirse en dos líneas. */
+.lr-opciones:not(.lr-opciones--anchas) .lr-opcion { flex: 0 0 auto; }
+.lr-opciones:not(.lr-opciones--anchas) .lr-opcion span { white-space: nowrap; }
+
+/* ---------- casillas ---------- */
+.lr-casilla {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: var(--space-2);
+}
+.lr-casilla input { margin: 3px 0 0; accent-color: var(--gold); flex-shrink: 0; width: 17px; height: 17px; }
+.lr-casilla label {
+    margin: 0 0 0;
+    font-weight: 400;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--ink);
+    cursor: pointer;
+}
+
+.lr-anidado {
+    margin-top: var(--space-2);
+    padding: var(--space-3);
+    border-left: 3px solid var(--gold);
+    background: var(--surface);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+.lr-anidado > .lr-pista { margin: 0 0 var(--space-2); }
+
+/* ---------- nota de datos personales ---------- */
+.lr-nota-datos {
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--rule);
+}
+.lr-nota-datos h3 {
+    margin: 0 0 var(--space-1);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 600;
+}
+.lr-nota-datos p {
+    margin: 0 0 var(--space-1);
+    font-size: 0.8125rem;
+    line-height: 1.65;
+    color: var(--ink-muted);
+}
+.lr-nota-datos p:last-child { margin-bottom: 0; }
+
+/* ---------- envío ---------- */
+.lr-error-general {
+    margin: var(--space-3) 0;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid #dc2626;
+    background: rgba(220, 38, 38, 0.07);
+    border-radius: var(--radius);
+    color: var(--ink);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+}
+
+.lr-envio { text-align: center; margin: var(--space-4) 0 var(--space-3); }
+.lr-envio .btn { width: 100%; }
+@media (min-width: 30rem) { .lr-envio .btn { width: auto; min-width: 18rem; } }
+.lr-envio .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.lr-pista--envio { margin-top: var(--space-1); }
+
+.lr-pie-legal {
+    margin: 0;
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--rule);
+    font-size: 0.8125rem;
+    line-height: 1.65;
+    color: var(--ink-muted);
+}
+
+/* La trampa anti-robot: fuera de la vista sin usar display:none, que algunos
+   robots detectan, y sin dejarla accesible a lectores de pantalla. */
+.lr-trampa {
+    position: absolute;
+    left: -9999px;
+    width: 1px; height: 1px;
+    overflow: hidden;
+}
+
+/* ---------- constancia ---------- */
+.lr-constancia {
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius);
+    padding: var(--space-4);
+    background: var(--paper-soft);
+}
+
+.lr-constancia-cabecera {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-2);
+    padding-bottom: var(--space-3);
+    border-bottom: 2px solid var(--gold);
+}
+.lr-constancia-cabecera h1 { margin: 4px 0 0; font-size: 1.5rem; line-height: 1.25; }
+
+.lr-numero {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 10px 16px;
+    border: 1px solid var(--gold);
+    border-radius: var(--radius-sm);
+    background: var(--gold-soft);
+}
+.lr-numero-rotulo { font-size: 0.8125rem; color: var(--gold-text); font-weight: 600; }
+.lr-numero strong {
+    font-family: var(--mono-stack);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--gold-text);
+    letter-spacing: 0.02em;
+}
+
+.lr-constancia-intro {
+    margin: var(--space-3) 0;
+    color: var(--ink-muted);
+    line-height: 1.7;
+}
+
+.lr-hoja { margin: 0; display: grid; gap: 0; }
+.lr-hoja > div {
+    display: grid;
+    gap: 2px 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+}
+@media (min-width: 34rem) { .lr-hoja > div { grid-template-columns: 13rem 1fr; } }
+.lr-hoja dt {
+    font-size: 0.8125rem;
+    color: var(--ink-faint);
+    font-weight: 500;
+}
+.lr-hoja dd {
+    margin: 0;
+    color: var(--ink);
+    line-height: 1.6;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.lr-constancia-pie {
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--rule);
+}
+.lr-constancia-pie p {
+    margin: 0 0 var(--space-1);
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: var(--ink-muted);
+}
+.lr-constancia-pie p:last-child { margin-bottom: 0; }
+
+.lr-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    justify-content: center;
+    margin: var(--space-4) 0 var(--space-2);
+}
+
+/* ---------- fase de prueba ----------
+   Ámbar y no rojo: no es un error, es un estado. Pero tiene que verse antes de
+   que alguien redacte un reclamo de verdad, así que va arriba del todo y se
+   imprime junto con la constancia. */
+.lr-banda-prueba {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 10px;
+    padding: 10px var(--space-3);
+    background: #b45309;
+    color: #fff;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+}
+.lr-banda-prueba strong { font-weight: 700; }
+.lr-banda-prueba > strong:first-child {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+}
+
+.lr-sello-prueba {
+    margin: 0 0 var(--space-3);
+    padding: 12px 14px;
+    border: 2px solid #b45309;
+    border-radius: var(--radius-sm);
+    background: rgba(180, 83, 9, 0.1);
+    color: var(--ink);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1.55;
+}
+
+/* ---------- impresión ----------
+   El artículo 4 pide que el consumidor pueda imprimir gratis su hoja. Lo que
+   sale por la impresora es la constancia y nada más: sin cabecera, sin botones
+   y sin fondos que se coman el tóner. */
+@media print {
+    .no-imprimir { display: none !important; }
+    body { background: #fff; color: #000; }
+    .page, .shell { margin: 0; padding: 0; max-width: none; }
+    .lr-constancia {
+        border: 0;
+        padding: 0;
+        background: #fff;
+    }
+    .lr-constancia-cabecera { border-bottom: 2px solid #000; }
+    /* El sello de prueba SÍ se imprime: una copia en papel sin él podría
+       confundirse con una hoja válida, que es justo lo que hay que evitar. */
+    .lr-sello-prueba { border: 2px solid #000; background: #fff; color: #000; }
+    .lr-numero { border: 1px solid #000; background: #fff; }
+    .lr-numero strong, .lr-numero-rotulo, .lr-constancia-cabecera .eyebrow { color: #000; }
+    .lr-hoja > div { break-inside: avoid; border-bottom: 1px solid #ccc; }
+    .lr-hoja dt, .lr-hoja dd, .lr-constancia-intro, .lr-constancia-pie p { color: #000; }
+    a[href^="mailto:"]::after { content: " (" attr(href) ")"; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lr-opcion, .lr-campo input, .lr-campo select, .lr-campo textarea { transition: none; }
+}

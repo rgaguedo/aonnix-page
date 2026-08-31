@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#F5F5F3" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0D0D0F" media="(prefers-color-scheme: dark)">
+    <meta name="robots" content="index,follow">
+    <title>Libro de Reclamaciones — AONNIX E.I.R.L.</title>
+    <meta name="description" content="Libro de Reclamaciones virtual de AONNIX E.I.R.L. (RUC 20615881768). Registra tu reclamo o queja y recibe al instante tu Hoja de Reclamación con número correlativo.">
+    <link rel="canonical" href="https://aonnix.com/libro-de-reclamaciones/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Aonnix">
+    <meta property="og:locale" content="es_PE">
+    <meta property="og:url" content="https://aonnix.com/libro-de-reclamaciones/">
+    <meta property="og:title" content="Libro de Reclamaciones — AONNIX E.I.R.L.">
+    <meta property="og:description" content="Registra tu reclamo o queja y recibe al instante tu Hoja de Reclamación con número correlativo.">
+    <meta property="og:image" content="https://aonnix.com/og-image.png">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicons/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicons/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/assets/favicons/apple-touch-icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/legal-shared.css">
+    <link rel="stylesheet" href="/libro-de-reclamaciones/libro.css">
+</head>
+<body>
+    <header class="nav no-imprimir">
+        <div class="nav-inner">
+            <a class="brand brand--wordmark" href="/" aria-label="AONNIX — inicio">
+                <span class="brand-text">AONNIX</span>
+            </a>
+            <nav class="nav-links" aria-label="Navegación principal">
+                <a href="/libro-de-reclamaciones/" class="active" aria-current="page">Libro de Reclamaciones</a>
+                <a href="/">Inicio</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="lr-banda-prueba no-imprimir" id="banda-prueba" role="status" hidden>
+        <strong>Fase de prueba</strong>
+        <span>Las hojas que se registren aquí <strong>no tienen validez legal</strong>: llevan una
+        serie de numeración propia y se eliminarán antes de la puesta en marcha.</span>
+    </div>
+
+    <main class="page">
+        <div class="shell">
+
+            <!-- ============ FORMULARIO ============ -->
+            <div id="vista-formulario">
+                <div class="hero">
+                    <div class="eyebrow">AONNIX E.I.R.L.</div>
+                    <h1>Libro de Reclamaciones</h1>
+                    <p class="lr-bajada">
+                        Conforme al artículo 150 del Código de Protección y Defensa del Consumidor
+                        (Ley 29571), AONNIX E.I.R.L. pone a tu disposición este Libro de Reclamaciones
+                        virtual. Al enviarlo recibirás <strong>al instante</strong> tu Hoja de
+                        Reclamación con su número correlativo, y podrás imprimirla o guardarla.
+                    </p>
+                </div>
+
+                <div class="lr-aviso" id="aviso-sin-endpoint" hidden>
+                    <p><strong>El registro en línea aún no está habilitado.</strong></p>
+                    <p>
+                        Mientras tanto, escríbenos a
+                        <a href="mailto:soporte@aonnix.com">soporte@aonnix.com</a> y registraremos
+                        tu reclamo o queja en el libro, con su número correlativo y su constancia.
+                    </p>
+                </div>
+
+                <!-- Sección fija del Anexo I: identificación del proveedor. -->
+                <section class="lr-proveedor" aria-label="Identificación del proveedor">
+                    <h2 class="lr-titulo-seccion">Proveedor</h2>
+                    <dl class="lr-datos-proveedor">
+                        <div><dt>Razón social</dt><dd>AONNIX E.I.R.L.</dd></div>
+                        <div><dt>RUC</dt><dd>20615881768</dd></div>
+                        <div><dt>Domicilio fiscal</dt><dd>Plaza Padre Constancio Bollar 313, San Isidro, Lima 15073, Perú</dd></div>
+                        <div><dt>Código de identificación</dt><dd>LR-AONNIX-VIRTUAL-01</dd></div>
+                    </dl>
+                </section>
+
+                <div class="lr-definiciones">
+                    <div>
+                        <h3>Reclamo</h3>
+                        <p>Disconformidad relacionada a los productos o servicios.</p>
+                    </div>
+                    <div>
+                        <h3>Queja</h3>
+                        <p>Disconformidad no relacionada a los productos o servicios; o malestar o descontento respecto a la atención al público.</p>
+                    </div>
+                </div>
+
+                <div class="lr-error-general" id="error-general" role="alert" hidden></div>
+
+                <form id="formulario" class="lr-formulario" novalidate>
+                    <!-- Trampa anti-robot. Fuera de la vista y fuera del orden de tabulación:
+                         ningún humano la ve, así que quien la llena no es uno. -->
+                    <div class="lr-trampa" aria-hidden="true">
+                        <label for="companiaWeb">No llenar este campo</label>
+                        <input type="text" id="companiaWeb" name="companiaWeb" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <fieldset class="lr-bloque">
+                        <legend><span class="lr-num">1</span> Tus datos</legend>
+
+                        <div class="lr-campo">
+                            <label for="nombre">Nombres y apellidos <abbr title="obligatorio">*</abbr></label>
+                            <input type="text" id="nombre" name="nombre" maxlength="120" autocomplete="name" required>
+                            <p class="lr-fallo" id="fallo-consumidor-nombre" hidden></p>
+                        </div>
+
+                        <div class="lr-fila">
+                            <div class="lr-campo">
+                                <label for="tipoDocumento">Tipo de documento <abbr title="obligatorio">*</abbr></label>
+                                <select id="tipoDocumento" name="tipoDocumento" required>
+                                    <option value="DNI">DNI</option>
+                                    <option value="CE">Carné de extranjería</option>
+                                    <option value="PASAPORTE">Pasaporte</option>
+                                </select>
+                                <p class="lr-fallo" id="fallo-consumidor-tipoDocumento" hidden></p>
+                            </div>
+                            <div class="lr-campo">
+                                <label for="numeroDocumento">Número de documento <abbr title="obligatorio">*</abbr></label>
+                                <input type="text" id="numeroDocumento" name="numeroDocumento" maxlength="20" inputmode="numeric" autocomplete="off" required>
+                                <p class="lr-fallo" id="fallo-consumidor-numeroDocumento" hidden></p>
+                            </div>
+                        </div>
+
+                        <div class="lr-campo">
+                            <label for="domicilio">Domicilio <abbr title="obligatorio">*</abbr></label>
+                            <input type="text" id="domicilio" name="domicilio" maxlength="200" autocomplete="street-address" required>
+                            <p class="lr-fallo" id="fallo-consumidor-domicilio" hidden></p>
+                        </div>
+
+                        <div class="lr-fila">
+                            <div class="lr-campo">
+                                <label for="telefono">Teléfono <abbr title="obligatorio">*</abbr></label>
+                                <input type="tel" id="telefono" name="telefono" maxlength="30" autocomplete="tel" required>
+                                <p class="lr-fallo" id="fallo-consumidor-telefono" hidden></p>
+                            </div>
+                            <div class="lr-campo">
+                                <label for="email">Correo electrónico <abbr title="obligatorio">*</abbr></label>
+                                <input type="email" id="email" name="email" maxlength="254" autocomplete="email" required
+                                       aria-describedby="pista-email">
+                                <p class="lr-pista" id="pista-email">Ahí te enviamos la copia de tu hoja.</p>
+                                <p class="lr-fallo" id="fallo-consumidor-email" hidden></p>
+                            </div>
+                        </div>
+
+                        <div class="lr-casilla">
+                            <input type="checkbox" id="esMenorDeEdad" name="esMenorDeEdad">
+                            <label for="esMenorDeEdad">El consumidor es menor de edad</label>
+                        </div>
+
+                        <div class="lr-anidado" id="bloque-apoderado" hidden>
+                            <p class="lr-pista">
+                                La norma exige los datos del padre, madre o representante cuando quien
+                                reclama es menor de edad.
+                            </p>
+                            <div class="lr-campo">
+                                <label for="apoderadoNombre">Nombres y apellidos del padre, madre o apoderado <abbr title="obligatorio">*</abbr></label>
+                                <input type="text" id="apoderadoNombre" name="apoderadoNombre" maxlength="120">
+                                <p class="lr-fallo" id="fallo-apoderado-nombre" hidden></p>
+                            </div>
+                            <div class="lr-campo">
+                                <label for="apoderadoDomicilio">Domicilio <abbr title="obligatorio">*</abbr></label>
+                                <input type="text" id="apoderadoDomicilio" name="apoderadoDomicilio" maxlength="200">
+                                <p class="lr-fallo" id="fallo-apoderado-domicilio" hidden></p>
+                            </div>
+                            <div class="lr-fila">
+                                <div class="lr-campo">
+                                    <label for="apoderadoTelefono">Teléfono <abbr title="obligatorio">*</abbr></label>
+                                    <input type="tel" id="apoderadoTelefono" name="apoderadoTelefono" maxlength="30">
+                                    <p class="lr-fallo" id="fallo-apoderado-telefono" hidden></p>
+                                </div>
+                                <div class="lr-campo">
+                                    <label for="apoderadoEmail">Correo electrónico <abbr title="obligatorio">*</abbr></label>
+                                    <input type="email" id="apoderadoEmail" name="apoderadoEmail" maxlength="254">
+                                    <p class="lr-fallo" id="fallo-apoderado-email" hidden></p>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="lr-bloque">
+                        <legend><span class="lr-num">2</span> Sobre qué reclamas</legend>
+
+                        <div class="lr-campo">
+                            <span class="lr-etiqueta-grupo" id="etiqueta-bien">¿Es un producto o un servicio? <abbr title="obligatorio">*</abbr></span>
+                            <div class="lr-opciones" role="radiogroup" aria-labelledby="etiqueta-bien">
+                                <label class="lr-opcion">
+                                    <input type="radio" name="bienTipo" value="PRODUCTO" required>
+                                    <span>Producto</span>
+                                </label>
+                                <label class="lr-opcion">
+                                    <input type="radio" name="bienTipo" value="SERVICIO">
+                                    <span>Servicio</span>
+                                </label>
+                            </div>
+                            <p class="lr-fallo" id="fallo-bien-tipo" hidden></p>
+                        </div>
+
+                        <div class="lr-campo">
+                            <label for="bienDescripcion">Descripción <abbr title="obligatorio">*</abbr></label>
+                            <input type="text" id="bienDescripcion" name="bienDescripcion" maxlength="500" required
+                                   aria-describedby="pista-bien">
+                            <p class="lr-pista" id="pista-bien">Por ejemplo: «Suscripción anual de Lonchera Fácil».</p>
+                            <p class="lr-fallo" id="fallo-bien-descripcion" hidden></p>
+                        </div>
+
+                        <div class="lr-fila">
+                            <div class="lr-campo">
+                                <label for="montoReclamado">Monto reclamado <span class="lr-opcional">(opcional)</span></label>
+                                <input type="text" id="montoReclamado" name="montoReclamado" inputmode="decimal" maxlength="20"
+                                       aria-describedby="pista-monto">
+                                <p class="lr-pista" id="pista-monto">En soles, solo el número.</p>
+                                <p class="lr-fallo" id="fallo-bien-montoReclamado" hidden></p>
+                            </div>
+                            <div class="lr-campo">
+                                <label for="numeroPedido">Número de pedido o compra <span class="lr-opcional">(opcional)</span></label>
+                                <input type="text" id="numeroPedido" name="numeroPedido" maxlength="60"
+                                       aria-describedby="pista-pedido">
+                                <p class="lr-pista" id="pista-pedido">Nos ahorra pedírtelo después.</p>
+                                <p class="lr-fallo" id="fallo-bien-numeroPedido" hidden></p>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="lr-bloque">
+                        <legend><span class="lr-num">3</span> Tu reclamo o queja</legend>
+
+                        <div class="lr-campo">
+                            <span class="lr-etiqueta-grupo" id="etiqueta-tipo">¿Qué estás registrando? <abbr title="obligatorio">*</abbr></span>
+                            <div class="lr-opciones lr-opciones--anchas" role="radiogroup" aria-labelledby="etiqueta-tipo">
+                                <label class="lr-opcion">
+                                    <input type="radio" name="tipoHoja" value="RECLAMO" required>
+                                    <span><strong>Reclamo</strong><em>Algo falló en el producto o el servicio.</em></span>
+                                </label>
+                                <label class="lr-opcion">
+                                    <input type="radio" name="tipoHoja" value="QUEJA">
+                                    <span><strong>Queja</strong><em>Algo falló en la atención que recibiste.</em></span>
+                                </label>
+                            </div>
+                            <p class="lr-fallo" id="fallo-detalle-tipo" hidden></p>
+                        </div>
+
+                        <div class="lr-campo">
+                            <label for="detalle">Detalle <abbr title="obligatorio">*</abbr></label>
+                            <textarea id="detalle" name="detalle" rows="6" maxlength="3000" required
+                                      aria-describedby="pista-detalle"></textarea>
+                            <p class="lr-pista" id="pista-detalle">Cuenta qué pasó, con fechas si las recuerdas. <span class="lr-cuenta" data-cuenta-de="detalle"></span></p>
+                            <p class="lr-fallo" id="fallo-detalle-detalle" hidden></p>
+                        </div>
+
+                        <div class="lr-campo">
+                            <label for="pedido">Qué pides <abbr title="obligatorio">*</abbr></label>
+                            <textarea id="pedido" name="pedido" rows="4" maxlength="1500" required
+                                      aria-describedby="pista-solicitud"></textarea>
+                            <p class="lr-pista" id="pista-solicitud">Qué esperas que hagamos. <span class="lr-cuenta" data-cuenta-de="pedido"></span></p>
+                            <p class="lr-fallo" id="fallo-detalle-pedido" hidden></p>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="lr-bloque">
+                        <legend><span class="lr-num">4</span> Confirmación</legend>
+
+                        <div class="lr-casilla">
+                            <input type="checkbox" id="conformidad" name="conformidad" required>
+                            <label for="conformidad">
+                                Declaro que la información consignada es veraz y que estoy conforme con
+                                los términos de mi reclamo o queja. <abbr title="obligatorio">*</abbr>
+                            </label>
+                        </div>
+                        <p class="lr-fallo" id="fallo-conformidad" hidden></p>
+
+                        <div class="lr-casilla">
+                            <input type="checkbox" id="aceptaTratamiento" name="aceptaTratamiento" required>
+                            <label for="aceptaTratamiento">
+                                Acepto que AONNIX E.I.R.L. trate mis datos personales para atender y
+                                responder esta hoja. <abbr title="obligatorio">*</abbr>
+                            </label>
+                        </div>
+                        <p class="lr-fallo" id="fallo-aceptaTratamiento" hidden></p>
+
+                        <div class="lr-casilla">
+                            <input type="checkbox" id="deseaCopiaPorCorreo" name="deseaCopiaPorCorreo" checked>
+                            <label for="deseaCopiaPorCorreo">Quiero recibir una copia de mi hoja por correo electrónico.</label>
+                        </div>
+
+                        <div class="lr-nota-datos">
+                            <h3>Qué hacemos con tus datos</h3>
+                            <p>
+                                Los datos de esta hoja los trata <strong>AONNIX E.I.R.L.</strong>
+                                (RUC 20615881768, Plaza Padre Constancio Bollar 313, San Isidro, Lima)
+                                con una sola finalidad: <strong>registrar, atender y responder</strong>
+                                tu reclamo o queja, y acreditarlo ante el INDECOPI si lo requiere.
+                            </p>
+                            <p>
+                                Se conservan <strong>como mínimo dos años</strong> desde el registro,
+                                porque la ley lo exige. No se usan para publicidad, no se ceden a
+                                terceros con fines comerciales y no alimentan ningún perfil.
+                            </p>
+                            <p>
+                                Puedes ejercer tus derechos de acceso, rectificación, cancelación y
+                                oposición escribiendo a
+                                <a href="mailto:soporte@aonnix.com">soporte@aonnix.com</a>. Ten en cuenta
+                                que la cancelación no puede alcanzar a lo que la ley obliga a conservar
+                                mientras dure ese plazo.
+                            </p>
+                        </div>
+                    </fieldset>
+
+                    <div class="lr-envio">
+                        <button type="submit" class="btn btn-primary" id="boton-enviar">
+                            Registrar y obtener mi número
+                        </button>
+                        <p class="lr-pista lr-pista--envio">
+                            Al enviar verás tu número de hoja en pantalla. Consérvalo.
+                        </p>
+                    </div>
+
+                    <p class="lr-pie-legal">
+                        La formulación del reclamo no impide acudir a otras vías de solución de
+                        controversias ni es requisito previo para interponer una denuncia ante el
+                        INDECOPI. El proveedor debe dar respuesta al reclamo o queja en un plazo no
+                        mayor a <strong>quince (15) días hábiles</strong>, el cual es improrrogable.
+                    </p>
+                </form>
+            </div>
+
+            <!-- ============ CONSTANCIA ============ -->
+            <div id="vista-constancia" hidden>
+                <div class="lr-constancia" id="constancia">
+                    <p class="lr-sello-prueba" id="sello-prueba" hidden></p>
+                    <div class="lr-constancia-cabecera">
+                        <div>
+                            <p class="eyebrow">Libro de Reclamaciones · AONNIX E.I.R.L.</p>
+                            <h1 id="titulo-constancia">Hoja de Reclamación</h1>
+                        </div>
+                        <div class="lr-numero" aria-labelledby="rotulo-numero">
+                            <span class="lr-numero-rotulo" id="rotulo-numero">N.°</span>
+                            <strong id="numero-hoja"></strong>
+                        </div>
+                    </div>
+
+                    <p class="lr-constancia-intro" id="intro-constancia"></p>
+
+                    <dl class="lr-hoja" id="detalle-constancia"></dl>
+
+                    <div class="lr-constancia-pie">
+                        <p>
+                            <strong>Reclamo:</strong> disconformidad relacionada a los productos o servicios.
+                            <strong>Queja:</strong> disconformidad no relacionada a los productos o servicios;
+                            o malestar o descontento respecto a la atención al público.
+                        </p>
+                        <p>
+                            La formulación del reclamo no impide acudir a otras vías de solución de
+                            controversias ni es requisito previo para interponer una denuncia ante el
+                            INDECOPI. El proveedor debe dar respuesta al reclamo o queja en un plazo no
+                            mayor a quince (15) días hábiles, el cual es improrrogable.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="lr-acciones no-imprimir">
+                    <button type="button" class="btn btn-primary" id="boton-imprimir">Imprimir o guardar en PDF</button>
+                    <a class="btn btn-ghost" href="/libro-de-reclamaciones/">Registrar otra hoja</a>
+                </div>
+                <p class="lr-pista no-imprimir" id="estado-correo"></p>
+            </div>
+
+            <div class="divider no-imprimir" aria-hidden="true">
+                <span class="glyph"></span>
+            </div>
+        </div>
+
+        <footer class="page-footer no-imprimir">
+            <a href="/" class="back-link">Volver a Aonnix</a>
+            <nav class="cross-links" aria-label="Documentos relacionados">
+                <a href="/legal/privacy/">Privacidad de la cuenta</a>
+                <a href="/legal/terms/">Condiciones de la cuenta</a>
+            </nav>
+            <p class="copy">&copy; <span id="year">2026</span> AONNIX E.I.R.L. Todos los derechos reservados.</p>
+        </footer>
+    </main>
+
+    <script src="/libro-de-reclamaciones/config.js"></script>
+    <script src="/libro-de-reclamaciones/libro.js"></script>
+</body>
+</html>

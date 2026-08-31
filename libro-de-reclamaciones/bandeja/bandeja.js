@@ -1,0 +1,308 @@
+/* Bandeja del Libro de Reclamaciones — AONNIX E.I.R.L.
+ *
+ * Inicio de sesión con Cognito por OAuth2 «authorization code» + PKCE. PKCE y
+ * no «implicit»: el flujo implícito devuelve el token en la URL, que acaba en
+ * el historial del navegador y en los registros de cualquier intermediario. Con
+ * PKCE lo que viaja por la URL es un código de un solo uso, inservible sin el
+ * verificador que nunca sale de esta pestaña.
+ *
+ * El token vive en memoria, no en localStorage: así no sobrevive al cierre de
+ * la pestaña y un XSS en otra página de aonnix.com no puede leerlo.
+ */
+(function () {
+    "use strict";
+
+    var CFG = window.BANDEJA_CONFIG || {};
+    var sesion = { token: null, correo: null, expira: 0 };
+    var hojaAbierta = null;
+
+    var $ = function (id) { return document.getElementById(id); };
+
+    /* ---------------- PKCE ---------------- */
+    function aleatorio(n) {
+        var b = new Uint8Array(n);
+        crypto.getRandomValues(b);
+        return base64url(b);
+    }
+    function base64url(bytes) {
+        var s = btoa(String.fromCharCode.apply(null, new Uint8Array(bytes)));
+        return s.replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+    }
+    async function reto(verificador) {
+        var hash = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(verificador));
+        return base64url(hash);
+    }
+
+    async function entrar() {
+        var verificador = aleatorio(48);
+        var estado = aleatorio(16);
+        // sessionStorage y no localStorage: el verificador solo tiene sentido
+        // durante este viaje de ida y vuelta, y muere con la pestaña.
+        sessionStorage.setItem("pkce", verificador);
+        sessionStorage.setItem("estado", estado);
+        var url = CFG.LOGIN + "/oauth2/authorize?response_type=code" +
+            "&client_id=" + encodeURIComponent(CFG.CLIENTE) +
+            "&redirect_uri=" + encodeURIComponent(CFG.REDIRECCION) +
+            "&scope=" + encodeURIComponent("openid email") +
+            "&state=" + estado +
+            "&code_challenge_method=S256&code_challenge=" + (await reto(verificador));
+        window.location.assign(url);
+    }
+
+    async function canjear(codigo, estado) {
+        var esperado = sessionStorage.getItem("estado");
+        var verificador = sessionStorage.getItem("pkce");
+        sessionStorage.removeItem("estado");
+        sessionStorage.removeItem("pkce");
+        // Sin esta comprobación, un tercero podría inducirte a canjear SU código
+        // y dejarte trabajando dentro de su sesión sin que lo notaras.
+        if (!esperado || estado !== esperado || !verificador) {
+            throw new Error("La respuesta del inicio de sesión no coincide con esta pestaña.");
+        }
+        var cuerpo = new URLSearchParams({
+            grant_type: "authorization_code",
+            client_id: CFG.CLIENTE,
+            code: codigo,
+            redirect_uri: CFG.REDIRECCION,
+            code_verifier: verificador
+        });
+        var r = await fetch(CFG.LOGIN + "/oauth2/token", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: cuerpo
+        });
+        if (!r.ok) { throw new Error("No se pudo completar el inicio de sesión."); }
+        var d = await r.json();
+        sesion.token = d.id_token;
+        sesion.expira = Date.now() + (d.expires_in || 3600) * 1000;
+        try {
+            var carga = JSON.parse(atob(d.id_token.split(".")[1].replace(/-/g, "+").replace(/_/g, "/")));
+            sesion.correo = carga.email || carga["cognito:username"] || "";
+        } catch (e) { sesion.correo = ""; }
+    }
+
+    function salir() {
+        sesion = { token: null, correo: null, expira: 0 };
+        window.location.assign(CFG.LOGIN + "/logout?client_id=" + encodeURIComponent(CFG.CLIENTE) +
+            "&logout_uri=" + encodeURIComponent(CFG.REDIRECCION));
+    }
+
+    /* ---------------- API ---------------- */
+    async function pedir(ruta, opciones) {
+        if (!sesion.token || Date.now() > sesion.expira) {
+            mostrar("login");
+            throw new Error("La sesión caducó. Vuelve a entrar.");
+        }
+        opciones = opciones || {};
+        opciones.headers = Object.assign({ "Authorization": sesion.token }, opciones.headers || {});
+        var r = await fetch(ruta, opciones);
+        if (r.status === 401 || r.status === 403) { mostrar("login"); throw new Error("Sesión no válida."); }
+        var d = await r.json().catch(function () { return {}; });
+        if (!r.ok) { var e = new Error(d.mensaje || "Error " + r.status); e.datos = d; e.estado = r.status; throw e; }
+        return d;
+    }
+
+    /* ---------------- pintado ---------------- */
+    function mostrar(vista) {
+        ["login", "listado", "hoja"].forEach(function (v) {
+            $("vista-" + v).hidden = v !== vista;
+        });
+        $("barra-sesion").hidden = vista === "login";
+    }
+
+    function aviso(texto, tipo) {
+        var caja = $("aviso");
+        caja.textContent = texto;
+        caja.className = "bn-aviso" + (tipo ? " bn-aviso--" + tipo : "");
+        caja.hidden = !texto;
+    }
+
+    var MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto",
+                 "septiembre","octubre","noviembre","diciembre"];
+    function fechaLarga(iso) {
+        var p = String(iso).split("-");
+        return p.length === 3 ? (+p[2]) + " de " + MESES[+p[1] - 1] + " de " + p[0] : iso;
+    }
+
+    function urgencia(dias, estado) {
+        if (estado === "RESPONDIDA") { return { clase: "ok", texto: "Respondida" }; }
+        if (dias < 0) { return { clase: "vencida", texto: "Venció hace " + Math.abs(dias) + " día(s) hábil(es)" }; }
+        if (dias === 0) { return { clase: "hoy", texto: "Vence hoy" }; }
+        if (dias <= 3) { return { clase: "cerca", texto: "Faltan " + dias + " día(s) hábil(es)" }; }
+        return { clase: "", texto: "Faltan " + dias + " día(s) hábil(es)" };
+    }
+
+    async function cargarListado(estado) {
+        aviso("");
+        $("cuerpo-listado").innerHTML = '<tr><td colspan="5">Cargando…</td></tr>';
+        try {
+            var d = await pedir(CFG.API + "?estado=" + encodeURIComponent(estado));
+            var cuerpo = $("cuerpo-listado");
+            cuerpo.textContent = "";
+            if (!d.hojas.length) {
+                var vacia = document.createElement("tr");
+                var celda = document.createElement("td");
+                celda.colSpan = 5;
+                celda.className = "bn-vacio";
+                celda.textContent = estado === "PENDIENTE"
+                    ? "No hay hojas pendientes de respuesta."
+                    : "No hay hojas en este estado.";
+                vacia.appendChild(celda); cuerpo.appendChild(vacia);
+                return;
+            }
+            d.hojas.forEach(function (h) {
+                var u = urgencia(h.diasHabilesRestantes, h.estado);
+                var fila = document.createElement("tr");
+                fila.className = "bn-fila bn-fila--" + (u.clase || "normal");
+                [
+                    h.numero,
+                    h.tipo,
+                    h.consumidor,
+                    fechaLarga(h.fechaLimiteRespuesta),
+                    u.texto
+                ].forEach(function (valor, i) {
+                    var celda = document.createElement("td");
+                    // textContent: lo que escribió el consumidor se muestra, no
+                    // se interpreta. La bandeja es el sitio donde un XSS
+                    // almacenado tendría más valor para un atacante.
+                    celda.textContent = valor;
+                    if (i === 0) { celda.className = "bn-numero"; }
+                    if (i === 4) { celda.className = "bn-urgencia bn-urgencia--" + (u.clase || "normal"); }
+                    fila.appendChild(celda);
+                });
+                var accion = document.createElement("td");
+                var boton = document.createElement("button");
+                boton.type = "button";
+                boton.className = "bn-enlace";
+                boton.textContent = h.estado === "RESPONDIDA" ? "Ver" : "Responder";
+                boton.addEventListener("click", function () { abrirHoja(h.numero); });
+                accion.appendChild(boton); fila.appendChild(accion);
+                cuerpo.appendChild(fila);
+            });
+        } catch (e) { aviso(e.message, "error"); }
+    }
+
+    function dato(lista, etiqueta, valor) {
+        if (!valor) { return; }
+        var div = document.createElement("div");
+        var dt = document.createElement("dt"); dt.textContent = etiqueta;
+        var dd = document.createElement("dd"); dd.textContent = valor;
+        div.appendChild(dt); div.appendChild(dd); lista.appendChild(div);
+    }
+
+    async function abrirHoja(numero) {
+        aviso("");
+        try {
+            var h = await pedir(CFG.API + "/" + encodeURIComponent(numero));
+            hojaAbierta = h;
+            $("numero-hoja").textContent = "N.° " + h.numero;
+            var u = urgencia(h.diasHabilesRestantes, (h.respuestaProveedor || {}).estado);
+            var plazo = $("plazo-hoja");
+            plazo.textContent = u.texto + " · límite " + fechaLarga(h.fechaLimiteRespuesta);
+            plazo.className = "bn-urgencia bn-urgencia--" + (u.clase || "normal");
+
+            var lista = $("datos-hoja"); lista.textContent = "";
+            dato(lista, "Tipo", h.detalle.tipo === "RECLAMO" ? "Reclamo" : "Queja");
+            dato(lista, "Registrada", fechaLarga(h.fechaRegistro) + ", " + (h.horaRegistro || ""));
+            dato(lista, "Consumidor", h.consumidor.nombre);
+            dato(lista, "Documento", h.consumidor.tipoDocumento + " " + h.consumidor.numeroDocumento);
+            dato(lista, "Domicilio", h.consumidor.domicilio);
+            dato(lista, "Teléfono", h.consumidor.telefono);
+            dato(lista, "Correo", h.consumidor.email);
+            if (h.esMenorDeEdad && h.apoderado) {
+                dato(lista, "Apoderado", h.apoderado.nombre + " · " + h.apoderado.telefono +
+                     " · " + h.apoderado.email);
+            }
+            dato(lista, "Bien", (h.bien.tipo === "PRODUCTO" ? "Producto" : "Servicio") +
+                 " — " + h.bien.descripcion);
+            dato(lista, "Monto reclamado", h.bien.montoReclamado ? "S/ " + h.bien.montoReclamado : "");
+            dato(lista, "N.º de pedido", h.bien.numeroPedido);
+            dato(lista, "Detalle", h.detalle.detalle);
+            dato(lista, "Pedido del consumidor", h.detalle.pedido);
+
+            var respuesta = h.respuestaProveedor || {};
+            var yaRespondida = respuesta.estado === "RESPONDIDA";
+            $("bloque-responder").hidden = yaRespondida;
+            $("bloque-respondida").hidden = !yaRespondida;
+            if (yaRespondida) {
+                $("acciones-registradas").textContent = respuesta.accionesAdoptadas || "";
+                $("meta-respuesta").textContent =
+                    "Respondida el " + fechaLarga(respuesta.fechaComunicacionRespuesta) +
+                    " por " + (respuesta.registradaPor || "—") +
+                    (respuesta.diasHabilesDeMargen < 0
+                        ? " · FUERA DE PLAZO por " + Math.abs(respuesta.diasHabilesDeMargen) + " día(s) hábil(es)"
+                        : " · dentro del plazo");
+            } else {
+                $("acciones").value = "";
+            }
+            mostrar("hoja");
+            window.scrollTo(0, 0);
+        } catch (e) { aviso(e.message, "error"); }
+    }
+
+    async function enviarRespuesta() {
+        var acciones = $("acciones").value.trim();
+        if (!acciones) { aviso("Escribe qué se hizo con el reclamo o la queja.", "error"); return; }
+        var boton = $("boton-responder");
+        boton.disabled = true; boton.textContent = "Guardando…";
+        try {
+            var d = await pedir(CFG.API + "/" + encodeURIComponent(hojaAbierta.numero) + "/respuesta", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ accionesAdoptadas: acciones })
+            });
+            aviso("Respuesta registrada" + (d.consumidorAvisado
+                ? " y enviada al consumidor." : ". No se pudo enviar el correo; la constancia sí quedó guardada."),
+                d.dentroDelPlazo ? "ok" : "error");
+            await abrirHoja(hojaAbierta.numero);
+        } catch (e) {
+            // 409: otra persona del área respondió mientras esta pestaña estaba abierta.
+            aviso(e.message, "error");
+            if (e.estado === 409) { await abrirHoja(hojaAbierta.numero); }
+        } finally {
+            boton.disabled = false; boton.textContent = "Registrar respuesta";
+        }
+    }
+
+    /* ---------------- arranque ---------------- */
+    async function arrancar() {
+        $("anio").textContent = new Date().getFullYear();
+        if (!CFG.API || !CFG.LOGIN || !CFG.CLIENTE) {
+            mostrar("login");
+            aviso("La bandeja todavía no está configurada: faltan los valores de bandeja/config.js.", "error");
+            $("boton-entrar").disabled = true;
+            return;
+        }
+        $("boton-entrar").addEventListener("click", entrar);
+        $("boton-salir").addEventListener("click", salir);
+        $("boton-responder").addEventListener("click", enviarRespuesta);
+        $("boton-volver").addEventListener("click", function () {
+            mostrar("listado"); cargarListado($("filtro").value);
+        });
+        $("filtro").addEventListener("change", function () { cargarListado(this.value); });
+
+        var params = new URLSearchParams(window.location.search);
+        if (params.get("error")) {
+            mostrar("login");
+            aviso("El inicio de sesión no se completó.", "error");
+            return;
+        }
+        if (params.get("code")) {
+            try {
+                await canjear(params.get("code"), params.get("state"));
+                // El código se borra de la barra de direcciones en cuanto se
+                // canjea: no tiene por qué quedar en el historial.
+                history.replaceState({}, "", window.location.pathname);
+                $("correo-sesion").textContent = sesion.correo;
+                mostrar("listado");
+                await cargarListado("PENDIENTE");
+                return;
+            } catch (e) {
+                mostrar("login"); aviso(e.message, "error"); return;
+            }
+        }
+        mostrar("login");
+    }
+
+    arrancar();
+})();

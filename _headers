@@ -1,0 +1,22 @@
+# Cabeceras de seguridad para aonnix.com (Netlify las aplica en el borde).
+#
+# El objetivo no es esconder el HTML —eso no se puede, el navegador tiene que
+# leerlo— sino impedir los dos abusos que sí hacen daño: que alguien empotre
+# nuestras páginas en su sitio y las haga pasar por suyas, y que se inyecte
+# código en ellas.
+
+/*
+  # Nadie puede meter aonnix.com dentro de un iframe. Sin esto, un tercero
+  # podría montar su web alrededor de nuestro Libro de Reclamaciones y
+  # aparentar que el libro es el suyo.
+  X-Frame-Options: DENY
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; connect-src 'self' https://libro.aonnix.com; upgrade-insecure-requests
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+# El Libro de Reclamaciones maneja datos personales: ni cachés intermedias ni
+# el historial del navegador deben conservar la constancia de nadie.
+/libro-de-reclamaciones/*
+  Cache-Control: no-store, max-age=0

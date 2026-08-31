@@ -775,6 +775,12 @@ h2.section-title {
     .footer-grid--2 {
         grid-template-columns: 1.4fr 1fr;
     }
+    /* Variante de tres columnas: Marca + Legal + Divisiones. La estrenó el
+       Libro de Reclamaciones, que la ley obliga a tener a la vista en el pie
+       de cualquier página del sitio. */
+    .footer-grid--3 {
+        grid-template-columns: 1.4fr 1fr 1fr;
+    }
 }
 
 .footer-col h4 {
