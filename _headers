@@ -4,13 +4,19 @@
 # leerlo— sino impedir los dos abusos que sí hacen daño: que alguien empotre
 # nuestras páginas en su sitio y las haga pasar por suyas, y que se inyecte
 # código en ellas.
+#
+# `connect-src` apuntaba a libro.aonnix.com, un dominio que se planeó y luego se
+# descartó, y nunca se actualizó cuando aparecieron los endpoints de verdad. El
+# resultado era que la bandeja no podía canjear su token en Cognito ni llamar a
+# la API: el navegador cortaba las dos peticiones antes de salir. Los comodines
+# son de host, no de esquema, y quedan acotados a la región donde vive la pila.
 
 /*
   # Nadie puede meter aonnix.com dentro de un iframe. Sin esto, un tercero
   # podría montar su web alrededor de nuestro Libro de Reclamaciones y
   # aparentar que el libro es el suyo.
   X-Frame-Options: DENY
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; connect-src 'self' https://libro.aonnix.com; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; connect-src 'self' https://*.auth.us-east-1.amazoncognito.com https://*.execute-api.us-east-1.amazonaws.com; upgrade-insecure-requests
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), interest-cohort=()
