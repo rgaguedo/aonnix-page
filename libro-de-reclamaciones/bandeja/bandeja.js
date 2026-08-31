@@ -127,6 +127,7 @@
             $("vista-" + v).hidden = v !== vista;
         });
         $("barra-sesion").hidden = vista === "login";
+        document.body.classList.toggle("en-acceso", vista === "login");
     }
 
     function aviso(texto, tipo) {
