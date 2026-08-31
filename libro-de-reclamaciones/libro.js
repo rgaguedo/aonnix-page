@@ -234,8 +234,9 @@
         fila(lista, "Fecha de registro", fechaLarga(hoja.fechaRegistro) + ", " + hoja.horaRegistro);
         fila(lista, "Tipo", esReclamo ? "Reclamo" : "Queja");
         fila(lista, "Proveedor", hoja.proveedor.razonSocial + " — RUC " + hoja.proveedor.ruc);
-        fila(lista, "Domicilio del proveedor", hoja.proveedor.domicilio);
+        fila(lista, "Libro de Reclamaciones", hoja.proveedor.libroVirtual);
         fila(lista, "Código de identificación", hoja.proveedor.codigoIdentificacion);
+        fila(lista, "Contacto del proveedor", hoja.proveedor.contacto);
         fila(lista, "Consumidor", hoja.consumidor.nombre);
         fila(lista, "Documento", hoja.consumidor.tipoDocumento + " " + hoja.consumidor.numeroDocumento);
         fila(lista, "Domicilio", hoja.consumidor.domicilio);
