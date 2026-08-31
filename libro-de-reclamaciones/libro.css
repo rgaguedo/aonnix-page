@@ -11,12 +11,30 @@
 .page .shell,
 .page .page-footer { max-width: 52rem; }
 
+/* El hero de legal-shared.css centra su contenido. Esta bajada tenía ancho
+   máximo pero no `margin: auto`, así que su caja quedaba pegada a la izquierda
+   mientras el título sí se centraba: el texto salía centrado dentro de una caja
+   descentrada, que es lo que se veía torcido.
+
+   Y va corta a propósito. Un párrafo centrado de cuatro líneas se lee mal —los
+   dos bordes quedan dentados—, así que el amparo legal baja a su propia línea
+   en vez de engordar la entradilla. */
 .lr-bajada {
-    max-width: var(--measure);
+    max-width: 34rem;
+    margin: var(--space-2) auto 0;
     color: var(--ink-muted);
     font-size: 1.0625rem;
-    line-height: 1.7;
-    margin: var(--space-2) 0 0;
+    line-height: 1.65;
+    text-wrap: balance;
+}
+
+.lr-amparo {
+    max-width: 34rem;
+    margin: var(--space-2) auto 0;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--ink-faint);
+    text-wrap: balance;
 }
 
 /* ---------- proveedor (sección fija del Anexo I) ---------- */
@@ -46,7 +64,10 @@
     color: var(--ink-faint);
     margin-bottom: 2px;
 }
-.lr-datos-proveedor dd { margin: 0; color: var(--ink); font-weight: 500; }
+.lr-datos-proveedor dd {
+    margin: 0; color: var(--ink); font-weight: 500;
+    overflow-wrap: anywhere;   /* la URL del libro es larga y partía la retícula */
+}
 
 /* ---------- reclamo vs. queja ---------- */
 .lr-definiciones {
@@ -110,7 +131,7 @@
     font-variant-numeric: tabular-nums;
 }
 
-.lr-campo { margin-bottom: var(--space-3); }
+.lr-campo { margin-bottom: var(--space-3); scroll-margin-top: 5rem; }
 .lr-campo:last-child { margin-bottom: 0; }
 
 .lr-fila { display: grid; gap: var(--space-3); }
@@ -278,6 +299,7 @@
 
 /* ---------- envío ---------- */
 .lr-error-general {
+    scroll-margin-top: 5rem;
     margin: var(--space-3) 0;
     padding: var(--space-2) var(--space-3);
     border: 1px solid #dc2626;
@@ -401,6 +423,11 @@
    Ámbar y no rojo: no es un error, es un estado. Pero tiene que verse antes de
    que alguien redacte un reclamo de verdad, así que va arriba del todo y se
    imprime junto con la constancia. */
+/* La banda es fija, así que al desplazarse el contenido pasa por debajo. Sin
+   esto, enfocar un campo o saltar a un error lo dejaba escondido detrás de
+   ella: el navegador lo subía al borde superior, que la banda ocupa. */
+html { scroll-padding-top: 4.5rem; }
+
 .lr-banda-prueba {
     position: sticky;
     top: 0;

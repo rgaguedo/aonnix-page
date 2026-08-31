@@ -143,12 +143,17 @@
         return p.length === 3 ? (+p[2]) + " de " + MESES[+p[1] - 1] + " de " + p[0] : iso;
     }
 
+    function habiles(n) {
+        return n === 1 ? "1 día hábil" : n + " días hábiles";
+    }
+
     function urgencia(dias, estado) {
         if (estado === "RESPONDIDA") { return { clase: "ok", texto: "Respondida" }; }
-        if (dias < 0) { return { clase: "vencida", texto: "Venció hace " + Math.abs(dias) + " día(s) hábil(es)" }; }
+        if (dias < 0) { return { clase: "vencida", texto: "Venció hace " + habiles(Math.abs(dias)) }; }
         if (dias === 0) { return { clase: "hoy", texto: "Vence hoy" }; }
-        if (dias <= 3) { return { clase: "cerca", texto: "Faltan " + dias + " día(s) hábil(es)" }; }
-        return { clase: "", texto: "Faltan " + dias + " día(s) hábil(es)" };
+        if (dias === 1) { return { clase: "cerca", texto: "Vence mañana" }; }
+        if (dias <= 3) { return { clase: "cerca", texto: "Faltan " + habiles(dias) }; }
+        return { clase: "normal", texto: "Faltan " + habiles(dias) };
     }
 
     async function cargarListado(estado) {
@@ -254,7 +259,7 @@
                     "Respondida el " + fechaLarga(respuesta.fechaComunicacionRespuesta) +
                     " por " + (respuesta.registradaPor || "—") +
                     (respuesta.diasHabilesDeMargen < 0
-                        ? " · FUERA DE PLAZO por " + Math.abs(respuesta.diasHabilesDeMargen) + " día(s) hábil(es)"
+                        ? " · FUERA DE PLAZO por " + habiles(Math.abs(respuesta.diasHabilesDeMargen))
                         : " · dentro del plazo");
             } else {
                 $("acciones").value = "";

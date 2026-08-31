@@ -3,6 +3,25 @@
    Mobile-first. CSS vanilla. Sin frameworks.
    ========================================================= */
 
+/* El sitio se adapta al tema del sistema, pero sin declarar `color-scheme` el
+   navegador dibuja los controles NATIVOS —radios, casillas, desplegables,
+   barras de desplazamiento— con su apariencia clara, incluso sobre fondo
+   oscuro. El síntoma era que un radio sin marcar parecía marcado: se veía como
+   un punto blanco relleno sobre la tarjeta oscura.
+
+   Esto lo arregla en todo el sitio, no solo en el Libro de Reclamaciones: las
+   páginas legales y de soporte comparten estas hojas. */
+/* El atributo `hidden` solo trae `display: none` desde la hoja del navegador, y
+   cualquier `display` declarado aquí le gana. Ocurrió dos veces: la barra de
+   sesión aparecía sin sesión, y —esta era grave— la banda de FASE DE PRUEBA
+   habría seguido visible en producción, porque ambas declaran `display: flex`.
+   Esta regla lo cierra para todo el sitio de una vez. */
+[hidden] { display: none !important; }
+
+:root {
+    color-scheme: light dark;
+}
+
 :root {
     /* ---------- AONNIX brand tokens — Phase 1 (Minimal Tech Modular) ---------- */
     --aonnix-graphite: #0D0D0F;
