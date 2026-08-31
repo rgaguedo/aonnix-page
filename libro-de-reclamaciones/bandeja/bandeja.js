@@ -13,7 +13,24 @@
     "use strict";
 
     var CFG = window.BANDEJA_CONFIG || {};
-    var sesion = { token: null, correo: null, expira: 0 };
+    var sesion = { token: null, correo: null, expira: 0, grupos: [] };
+
+    // Los tres perfiles. Quien manda es el servidor —comprueba el grupo en cada
+    // petición—, pero la pantalla tiene que decir la verdad desde el principio:
+    // ofrecer un cuadro de respuesta a quien no puede responder es prometer algo
+    // que se romperá al pulsar el botón.
+    var PERFILES = {
+        "libro-admin":   { nombre: "Administrador", responde: true,  enClaro: true },
+        "libro-agente":  { nombre: "Atención",      responde: true,  enClaro: true },
+        "libro-lectura": { nombre: "Consulta",      responde: false, enClaro: false }
+    };
+
+    function perfil() {
+        for (var i = 0; i < sesion.grupos.length; i++) {
+            if (PERFILES[sesion.grupos[i]]) { return PERFILES[sesion.grupos[i]]; }
+        }
+        return { nombre: "Sin perfil", responde: false, enClaro: false };
+    }
     var hojaAbierta = null;
 
     var $ = function (id) { return document.getElementById(id); };
@@ -78,11 +95,13 @@
         try {
             var carga = JSON.parse(atob(d.id_token.split(".")[1].replace(/-/g, "+").replace(/_/g, "/")));
             sesion.correo = carga.email || carga["cognito:username"] || "";
-        } catch (e) { sesion.correo = ""; }
+            sesion.grupos = carga["cognito:groups"] || [];
+            if (typeof sesion.grupos === "string") { sesion.grupos = [sesion.grupos]; }
+        } catch (e) { sesion.correo = ""; sesion.grupos = []; }
     }
 
     function salir() {
-        sesion = { token: null, correo: null, expira: 0 };
+        sesion = { token: null, correo: null, expira: 0, grupos: [] };
         window.location.assign(CFG.LOGIN + "/logout?client_id=" + encodeURIComponent(CFG.CLIENTE) +
             "&logout_uri=" + encodeURIComponent(CFG.REDIRECCION));
     }
@@ -220,9 +239,14 @@
             dato(lista, "Detalle", h.detalle.detalle);
             dato(lista, "Pedido del consumidor", h.detalle.pedido);
 
+            // El servidor marca la hoja cuando viene con datos tapados. Se lee
+            // de ahí y no del token: si los dos se desalinearan, manda el que
+            // realmente decidió qué enviar.
+            $("aviso-enmascarado").hidden = !h.datosEnmascarados;
+
             var respuesta = h.respuestaProveedor || {};
             var yaRespondida = respuesta.estado === "RESPONDIDA";
-            $("bloque-responder").hidden = yaRespondida;
+            $("bloque-responder").hidden = yaRespondida || !perfil().responde;
             $("bloque-respondida").hidden = !yaRespondida;
             if (yaRespondida) {
                 $("acciones-registradas").textContent = respuesta.accionesAdoptadas || "";
@@ -294,6 +318,8 @@
                 // canjea: no tiene por qué quedar en el historial.
                 history.replaceState({}, "", window.location.pathname);
                 $("correo-sesion").textContent = sesion.correo;
+                $("perfil-sesion").textContent = perfil().nombre;
+                if (!perfil().responde) { document.body.classList.add("solo-lectura"); }
                 mostrar("listado");
                 await cargarListado("PENDIENTE");
                 return;
