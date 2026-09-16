@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-# La bandeja es una herramienta interna, no una página del sitio.
-Disallow: /libro-de-reclamaciones/bandeja/
 
 Sitemap: https://aonnix.com/sitemap.xml
