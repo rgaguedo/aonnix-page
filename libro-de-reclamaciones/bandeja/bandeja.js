@@ -55,6 +55,13 @@
         var estado = aleatorio(16);
         // sessionStorage y no localStorage: el verificador solo tiene sentido
         // durante este viaje de ida y vuelta, y muere con la pestaña.
+        //
+        // NO los muevas a memoria. Cuando la bandeja viva en la intranet, la
+        // sesión del portal se valida en el borde, y si esa sesión vence justo
+        // mientras Cognito devuelve el código, el navegador pasa por el login
+        // del portal antes de llegar aquí. Estos dos valores sobreviven a esa
+        // navegación extra y por eso el canje funciona; en memoria se perderían,
+        // y el fallo solo aparecería con la sesión del portal vencida.
         sessionStorage.setItem("pkce", verificador);
         sessionStorage.setItem("estado", estado);
         var url = CFG.LOGIN + "/oauth2/authorize?response_type=code" +
