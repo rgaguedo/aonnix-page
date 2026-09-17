@@ -46,6 +46,10 @@
     --line: #e6e6ea;
     --accent: var(--aonnix-premium-blue);
     --accent-soft: #1d4ed8;
+    /* El azul de marca como TEXTO. Se separa de --accent porque ese también pinta
+       fondos de botón, y la tinta que un fondo oscuro necesita es justo la que
+       deja ilegible el texto blanco encima del botón. Sobre blanco mide 5.17. */
+    --accent-text: var(--aonnix-premium-blue);
     --highlight: var(--aonnix-creative-accent);
 
     /* Radii: brand kit define 24px para cards y 12px para buttons */
@@ -74,6 +78,11 @@
         --line: #1d1d22;
         --accent: var(--aonnix-premium-blue);
         --accent-soft: #3b82f6;
+        /* En oscuro el azul de marca se queda en 3.59-3.76 sobre los tres fondos,
+           por debajo del 4.5 que pide el texto normal. Este tono mide 7.29-7.64.
+           --accent no se toca: sigue siendo el fondo del botón primario, donde el
+           texto blanco necesita el azul oscuro (4.87) y con el claro caería a 2.40. */
+        --accent-text: #60a5fa;
         --highlight: var(--aonnix-creative-accent);
     }
 }
@@ -254,7 +263,7 @@ section {
     font-size: 0.72rem;
     letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-text);
     font-weight: 600;
     margin-bottom: 1.5rem;
     padding: 0.4rem 0.85rem;
@@ -272,7 +281,7 @@ section {
 }
 
 .hero h1 .accent {
-    color: var(--accent);
+    color: var(--accent-text);
     font-weight: 700;
 }
 
@@ -346,7 +355,7 @@ section {
 
 .btn-ghost:hover {
     border-color: var(--accent);
-    color: var(--accent);
+    color: var(--accent-text);
 }
 
 /* ---------- Bloques de sección ---------- */
