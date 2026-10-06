@@ -5,3 +5,11 @@
 # externos: tiene que seguir llevando a la política, no a un error.
 /legal/patitas-mascota-privacy     /legal/patitas-id-privacy/          301
 /legal/patitas-mascota-privacy/*   /legal/patitas-id-privacy/:splat    301
+
+# El soporte y los términos de Patitas ID cambiaron de dirección el 2026-10-06, por el mismo
+# motivo. Las anteriores están en las apps de iOS y de Android ya compiladas, en la ficha del
+# App Store y en la de Google Play. El ancla (#eliminar-datos) viaja sola con la redirección.
+/support/patitas-mascota     /support/patitas-id/          301
+/support/patitas-mascota/*   /support/patitas-id/:splat    301
+/terms/patitas-mascota       /terms/patitas-id/            301
+/terms/patitas-mascota/*     /terms/patitas-id/:splat      301
