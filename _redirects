@@ -1,0 +1,7 @@
+# Direcciones anteriores que siguen funcionando (Netlify las resuelve en el borde).
+#
+# La privacidad de Patitas ID cambió de dirección el 2026-10-05 para llevar el nombre de la
+# app. La anterior está en la app de iOS publicada, en su ficha del App Store y en enlaces
+# externos: tiene que seguir llevando a la política, no a un error.
+/legal/patitas-mascota-privacy     /legal/patitas-id-privacy/          301
+/legal/patitas-mascota-privacy/*   /legal/patitas-id-privacy/:splat    301
