@@ -90,4 +90,16 @@
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
+    <url>
+        <loc>https://aonnix.com/legal/chocala-privacy/</loc>
+        <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+        <loc>https://aonnix.com/terms/chocala/</loc>
+        <lastmod>2026-10-15</lastmod>
+    </url>
+    <url>
+        <loc>https://aonnix.com/support/chocala/</loc>
+        <lastmod>2026-10-15</lastmod>
+    </url>
 </urlset>
