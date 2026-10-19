@@ -609,7 +609,7 @@ h2.section-title {
     gap: 1rem;
 }
 
-/* Cada tarjeta tiene su ancla (/dev/#patitas-id), que es a donde apunta el perfil de la app en redes.
+/* Cada tarjeta tiene su ancla (/dev/#patitas), a donde llevan los enlaces cortos de redes (aonnix.com/tkper/patitas).
    El margen deja la tarjeta debajo de la barra fija y el borde marca a cuál se llegó. */
 .app-card {
     scroll-margin-top: 6rem;
