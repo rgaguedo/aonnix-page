@@ -969,7 +969,7 @@ h2.section-title {
 
 /* ---------- Aviso de cookies (assets/js/cookies.js) ----------
    Va en todas las páginas salvo el Libro de Reclamaciones. «No, gracias» y «Aceptar» tienen el mismo
-   tamaño: la elección tiene que ser libre. La letra es chica para que el aviso tape poco en el teléfono. */
+   tamaño: la elección tiene que ser libre. En el teléfono la letra es de 11 px: tapa poco y se distingue del texto de la página. */
 .aviso-cookies {
     position: fixed;
     left: 16px;
@@ -988,7 +988,7 @@ h2.section-title {
     border: 1px solid var(--line, #e6e6ea);
     border-radius: 16px;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
     line-height: 1.45;
 }
 
