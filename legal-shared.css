@@ -217,7 +217,7 @@ img, svg { max-width: 100%; display: block; }
    flex, que es lo que determina la caja. */
 .nav-inner > * { min-height: 1.36rem; }
 
-:root { --ancho-pagina: var(--measure); }
+:root { --ancho-pagina: var(--measure); --aviso-margen: clamp(1.25rem, 5vw, 2rem); }
 .nav-inner { max-width: var(--ancho-pagina); }
 
 .shell {

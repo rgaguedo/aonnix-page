@@ -972,11 +972,13 @@ h2.section-title {
    tamaño: la elección tiene que ser libre. En el teléfono la letra es de 11 px: tapa poco y se distingue del texto de la página. */
 .aviso-cookies {
     position: fixed;
-    left: 16px;
-    right: 16px;
+    left: 0;
+    right: 0;
     bottom: calc(16px + env(safe-area-inset-bottom));
     z-index: 100;
-    max-width: 560px;
+    /* Mismo ancho que el contenido de la página: el de .container en las páginas principales y el
+       de .shell en las legales, que definen --ancho-pagina y --aviso-margen en legal-shared.css. */
+    width: calc(min(100%, var(--ancho-pagina, var(--maxw, 1200px))) - 2 * var(--aviso-margen, 1.25rem));
     margin: 0 auto;
     padding: 0.85rem 1rem;
     display: flex;
