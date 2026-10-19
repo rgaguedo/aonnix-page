@@ -102,4 +102,10 @@
         <loc>https://aonnix.com/support/chocala/</loc>
         <lastmod>2026-10-15</lastmod>
     </url>
+    <url>
+        <loc>https://aonnix.com/legal/cookies/</loc>
+        <lastmod>2026-10-19</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
 </urlset>

@@ -5,18 +5,22 @@
 # nuestras páginas en su sitio y las haga pasar por suyas, y que se inyecte
 # código en ellas.
 #
-# `connect-src` solo necesita la API, que es a donde el formulario público manda
+# `connect-src` necesita la API, que es a donde el formulario público manda
 # la hoja. El permiso de conexión a Cognito lo pedía la bandeja del área, que
 # desde el 2026-09-16 vive en intranet.aonnix.com, detrás de su propia sesión, y
 # ya no se sirve desde aquí. El comodín es de host, no de esquema, y queda
 # acotado a la región donde vive la pila.
+#
+# Google Analytics (desde el 2026-10-19) suma su script, sus envíos y sus píxeles
+# en `script-src`, `connect-src` e `img-src`. Solo se carga si la persona acepta
+# el aviso de assets/js/cookies.js, y el Libro de Reclamaciones no lo incluye.
 
 /*
   # Nadie puede meter aonnix.com dentro de un iframe. Sin esto, un tercero
   # podría montar su web alrededor de nuestro Libro de Reclamaciones y
   # aparentar que el libro es el suyo.
   X-Frame-Options: DENY
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; connect-src 'self' https://*.execute-api.us-east-1.amazonaws.com; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' https://www.googletagmanager.com; connect-src 'self' https://*.execute-api.us-east-1.amazonaws.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; upgrade-insecure-requests
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), interest-cohort=()
