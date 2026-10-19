@@ -10,15 +10,34 @@
     var CLAVE = 'aonnix-cookies';
     var ACEPTADO = 'aceptado';
     var RECHAZADO = 'rechazado';
+    // Cuánto vale cada elección antes de volver a preguntar: 3 meses tras un «No, gracias» y
+    // 13 meses tras aceptar, para que el consentimiento no quede indefinido.
+    var DIA = 24 * 60 * 60 * 1000;
+    var VIGENCIA = { aceptado: 395 * DIA, rechazado: 90 * DIA };
     var cargado = false;
     var aviso = null;
 
+    // La elección se guarda con su fecha: {"valor":"rechazado","fecha":1792425661045}. Devuelve el
+    // valor si sigue vigente y null si nunca se eligió o ya venció.
     function leer() {
-        try { return localStorage.getItem(CLAVE); } catch (e) { return null; }
+        var guardado;
+        try { guardado = localStorage.getItem(CLAVE); } catch (e) { return null; }
+        if (!guardado) return null;
+        // Hasta el 2026-10-19 se guardaba solo el texto, sin fecha: se toma como elegido hoy.
+        if (guardado === ACEPTADO || guardado === RECHAZADO) {
+            guardar(guardado);
+            return guardado;
+        }
+        var eleccion;
+        try { eleccion = JSON.parse(guardado); } catch (e) { return null; }
+        if (!eleccion || !VIGENCIA[eleccion.valor] || typeof eleccion.fecha !== 'number') return null;
+        return Date.now() - eleccion.fecha < VIGENCIA[eleccion.valor] ? eleccion.valor : null;
     }
 
     function guardar(valor) {
-        try { localStorage.setItem(CLAVE, valor); } catch (e) { /* Sin almacenamiento, el aviso vuelve en cada página. */ }
+        try {
+            localStorage.setItem(CLAVE, JSON.stringify({ valor: valor, fecha: Date.now() }));
+        } catch (e) { /* Sin almacenamiento, el aviso vuelve en cada página. */ }
     }
 
     function cargarAnalitica() {
@@ -95,7 +114,7 @@
         var valor = leer();
         estado.textContent = valor === ACEPTADO ? 'Aceptaste la analítica en este navegador.'
             : valor === RECHAZADO ? 'Rechazaste la analítica en este navegador.'
-            : 'Todavía no elegiste en este navegador.';
+            : 'No tienes una elección vigente en este navegador.';
     }
 
     document.addEventListener('click', function (evento) {
