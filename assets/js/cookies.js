@@ -67,10 +67,14 @@
         aviso.setAttribute('role', 'region');
         aviso.setAttribute('aria-label', 'Aviso de cookies');
         aviso.innerHTML =
-            '<p>Usamos Google Analytics para contar las visitas y saber qué páginas sirven. Solo se activa si aceptas. ' +
+            '<p><strong>¿Nos brindas un momento para seguir mejorando?</strong> Tu experiencia es lo más importante para ' +
+            'nosotros, por lo que nos encantaría conocer qué secciones y contenidos del sitio te resultan realmente útiles ' +
+            'e interesantes. Para lograrlo, utilizamos cookies que nos permiten medir y contar las visitas a cada parte de ' +
+            'la página. Queremos darte la total tranquilidad de que no sabemos quién eres en ningún momento y de que jamás ' +
+            'emplearemos estos datos con fines publicitarios ni para enviarte anuncios. ' +
             '<a href="/legal/cookies/">Detalles</a></p>' +
             '<div class="aviso-cookies-botones">' +
-            '<button type="button" data-eleccion="' + RECHAZADO + '">Rechazar</button>' +
+            '<button type="button" data-eleccion="' + RECHAZADO + '">No, gracias</button>' +
             '<button type="button" data-eleccion="' + ACEPTADO + '">Aceptar</button>' +
             '</div>';
         aviso.addEventListener('click', function (evento) {

@@ -968,8 +968,8 @@ h2.section-title {
 }
 
 /* ---------- Aviso de cookies (assets/js/cookies.js) ----------
-   Va en todas las páginas salvo el Libro de Reclamaciones. Rechazar y Aceptar pesan lo mismo:
-   la elección tiene que ser libre. */
+   Va en todas las páginas salvo el Libro de Reclamaciones. «No, gracias» y «Aceptar» pesan lo mismo:
+   la elección tiene que ser libre. La letra es chica para que el aviso tape poco en el teléfono. */
 .aviso-cookies {
     position: fixed;
     left: 16px;
@@ -978,18 +978,24 @@ h2.section-title {
     z-index: 100;
     max-width: 560px;
     margin: 0 auto;
-    padding: 1rem 1.25rem;
+    padding: 0.85rem 1rem;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.75rem 1rem;
+    gap: 0.6rem 1rem;
     background: var(--bg-elev, #fff);
     color: var(--fg, #111);
     border: 1px solid var(--line, #e6e6ea);
     border-radius: 16px;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
-    font-size: 0.9rem;
-    line-height: 1.5;
+    font-size: 0.75rem;
+    line-height: 1.45;
+}
+
+@media (min-width: 640px) {
+    .aviso-cookies {
+        font-size: 0.8rem;
+    }
 }
 
 .aviso-cookies[hidden] {
@@ -1000,6 +1006,10 @@ h2.section-title {
     flex: 1 1 260px;
     margin: 0;
     color: var(--fg-muted, #4b4b52);
+}
+
+.aviso-cookies strong {
+    color: var(--fg, #111);
 }
 
 .aviso-cookies a {
@@ -1015,8 +1025,9 @@ h2.section-title {
 
 .aviso-cookies button {
     font: inherit;
+    font-size: 0.85rem;
     font-weight: 600;
-    padding: 0.55rem 1.1rem;
+    padding: 0.5rem 1rem;
     border-radius: var(--radius-button, 12px);
     border: 1px solid var(--fg, #111);
     background: transparent;
