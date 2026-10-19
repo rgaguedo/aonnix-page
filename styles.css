@@ -609,6 +609,36 @@ h2.section-title {
     gap: 1rem;
 }
 
+/* Cada tarjeta tiene su ancla (/dev/#patitas-id), que es a donde apunta el perfil de la app en redes.
+   El margen deja la tarjeta debajo de la barra fija y el borde marca a cuál se llegó. */
+.app-card {
+    scroll-margin-top: 6rem;
+}
+
+.app-card:target {
+    border-color: var(--fg);
+}
+
+/* Con el ícono, el título y la etiqueta no caben en una línea en un teléfono angosto: la etiqueta baja. */
+.app-card-head {
+    flex-wrap: wrap;
+}
+
+.app-card-title {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    min-width: 0;
+}
+
+.app-icon {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    border-radius: 22.5%;
+    border: 1px solid var(--line);
+}
+
 .app-card h3 {
     font-size: 1.3rem;
     font-weight: 600;
