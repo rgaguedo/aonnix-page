@@ -3,7 +3,7 @@
 # workspace. No se edita a mano: se cambia el catálogo y se vuelve a generar.
 # 302 y no 301: el navegador no guarda la redirección, así que el destino se puede cambiar después.
 
-# TikTok · Perfil
+# TikTok · Perfil de Aonnix
 /tkper/aonnix  /?utm_source=tiktok&utm_medium=social&utm_campaign=perfil&utm_content=aonnix  302
 /tkper/crecimiento  /dev/?utm_source=tiktok&utm_medium=social&utm_campaign=perfil&utm_content=crecimiento#crecimiento  302
 /tkper/lonchera  /dev/?utm_source=tiktok&utm_medium=social&utm_campaign=perfil&utm_content=lonchera#lonchera  302
@@ -17,7 +17,7 @@
 /tkpub/patitas  /dev/?utm_source=tiktok&utm_medium=social&utm_campaign=post&utm_content=patitas#patitas  302
 /tkpub/chocala  /dev/?utm_source=tiktok&utm_medium=social&utm_campaign=post&utm_content=chocala#chocala  302
 
-# Instagram · Perfil
+# Instagram · Perfil de Aonnix
 /igper/aonnix  /?utm_source=instagram&utm_medium=social&utm_campaign=perfil&utm_content=aonnix  302
 /igper/crecimiento  /dev/?utm_source=instagram&utm_medium=social&utm_campaign=perfil&utm_content=crecimiento#crecimiento  302
 /igper/lonchera  /dev/?utm_source=instagram&utm_medium=social&utm_campaign=perfil&utm_content=lonchera#lonchera  302
@@ -31,7 +31,7 @@
 /ighis/patitas  /dev/?utm_source=instagram&utm_medium=social&utm_campaign=historia&utm_content=patitas#patitas  302
 /ighis/chocala  /dev/?utm_source=instagram&utm_medium=social&utm_campaign=historia&utm_content=chocala#chocala  302
 
-# Facebook · Página
+# Facebook · Página de Aonnix
 /fbper/aonnix  /?utm_source=facebook&utm_medium=social&utm_campaign=perfil&utm_content=aonnix  302
 /fbper/crecimiento  /dev/?utm_source=facebook&utm_medium=social&utm_campaign=perfil&utm_content=crecimiento#crecimiento  302
 /fbper/lonchera  /dev/?utm_source=facebook&utm_medium=social&utm_campaign=perfil&utm_content=lonchera#lonchera  302
@@ -52,7 +52,7 @@
 /ytvid/patitas  /dev/?utm_source=youtube&utm_medium=social&utm_campaign=video&utm_content=patitas#patitas  302
 /ytvid/chocala  /dev/?utm_source=youtube&utm_medium=social&utm_campaign=video&utm_content=chocala#chocala  302
 
-# YouTube · Canal
+# YouTube · Canal de Aonnix
 /ytper/aonnix  /?utm_source=youtube&utm_medium=social&utm_campaign=perfil&utm_content=aonnix  302
 /ytper/crecimiento  /dev/?utm_source=youtube&utm_medium=social&utm_campaign=perfil&utm_content=crecimiento#crecimiento  302
 /ytper/lonchera  /dev/?utm_source=youtube&utm_medium=social&utm_campaign=perfil&utm_content=lonchera#lonchera  302
