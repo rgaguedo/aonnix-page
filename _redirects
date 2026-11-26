@@ -1,3 +1,11 @@
+# --- Reglas fijas de Aonnix Dev: no salen del catálogo y se conservan al regenerar ---
+# Libro de Reclamaciones: el formulario lo sirve AonnixLibroDeReclamaciones desde su CloudFront
+# (pila libro-reclamaciones-formulario) desde el 2026-11-25. Rewrite 200 para que la URL no cambie;
+# «!» fuerza la regla aunque exista la carpeta local libro-de-reclamaciones/.
+/libro-de-reclamaciones/   https://dgkr6dbveyw7i.cloudfront.net/libro-de-reclamaciones/index.html   200!
+/libro-de-reclamaciones/*  https://dgkr6dbveyw7i.cloudfront.net/libro-de-reclamaciones/:splat   200!
+# --- Fin de las reglas fijas ---
+
 # Enlaces cortos de aonnix.com: /<ámbito>/<app> lleva a la tarjeta de la app con sus etiquetas utm.
 # Archivo generado por 06_MARKETING/redes/enlaces/generar.py desde catalogo.json, en la raíz del
 # workspace. No se edita a mano: se cambia el catálogo y se vuelve a generar.
